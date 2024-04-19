@@ -24,7 +24,7 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(600, 400)
         icon = QIcon()
-        icon.addFile(u"C:/Users/86199/Pictures/f3006b49c9f1fc1519d2bf688fc52e70.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"image/f3006b49c9f1fc1519d2bf688fc52e70.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"#MainWindow{background-color: rgb(255, 82, 99)}\n"
 "")
@@ -37,7 +37,7 @@ class Ui_MainWindow(object):
         self.label = QLabel(MainWindow)
         self.label.setObjectName(u"label")
         self.label.setMaximumSize(QSize(70, 70))
-        self.label.setPixmap(QPixmap(u"C:/Users/86199/Pictures/Blog/QQ\u56fe\u724720231118082505.jpg"))
+        self.label.setPixmap(QPixmap(u"image/QQ图片20231118082505.jpg"))
         self.label.setScaledContents(True)
 
         self.verticalLayout_6.addWidget(self.label)
