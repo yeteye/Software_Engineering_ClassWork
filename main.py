@@ -9,7 +9,7 @@ class PomodoroWindowGenerator(QWidget):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-
+"""nihihs"""
 if __name__ == '__main__':
     app = QApplication()
     pomodoroWindowGenerator = PomodoroWindowGenerator()
