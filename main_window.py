@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'Pomodoro.ui'
+## Form generated from reading UI file 'pomodoro.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -18,6 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QListWidget,
     QListWidgetItem, QPushButton, QSizePolicy, QVBoxLayout,
     QWidget)
+
+from countdownwidget import CountdownWidget
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -71,31 +73,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_5 = QVBoxLayout()
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.label = QLabel(MainWindow)
-        self.label.setObjectName(u"label")
+        self.widget = CountdownWidget(MainWindow)
+        self.widget.setObjectName(u"widget")
 
-        self.verticalLayout_5.addWidget(self.label)
+        self.verticalLayout_5.addWidget(self.widget)
 
 
         self.verticalLayout_3.addLayout(self.verticalLayout_5)
 
-        self.verticalLayout_4 = QVBoxLayout()
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.pushButton_2 = QPushButton(MainWindow)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-
-        self.verticalLayout_4.addWidget(self.pushButton_2)
-
-        self.relaxButton = QPushButton(MainWindow)
-        self.relaxButton.setObjectName(u"relaxButton")
-
-        self.verticalLayout_4.addWidget(self.relaxButton)
-
-
-        self.verticalLayout_3.addLayout(self.verticalLayout_4)
-
         self.verticalLayout_3.setStretch(0, 4)
-        self.verticalLayout_3.setStretch(1, 2)
 
         self.horizontalLayout.addLayout(self.verticalLayout_3)
 
@@ -118,10 +104,5 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Pomodoro", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"\u793e\u533a", None))
         self.avatar.setText("")
-        self.label.setText("")
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb\n"
-"\u4f60\u7684\u4e0b\u4e00\u6b21\u4e13\u6ce8\u5427\uff01\uff01\uff01", None))
-        self.relaxButton.setText(QCoreApplication.translate("MainWindow", u"\u5de5\u4f5c\u7d2f\u4e86\n"
-"\u4f11\u606f\u4e00\u4e0b\u5427", None))
     # retranslateUi
 

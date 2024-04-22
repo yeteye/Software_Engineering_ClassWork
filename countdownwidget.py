@@ -1,4 +1,5 @@
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber
+from PySide6 import QtGui, QtWidgets
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber, QSizePolicy
 from PySide6.QtCore import QTimer
 
 
@@ -13,9 +14,13 @@ class CountdownWidget(QWidget):
         layout = QVBoxLayout(self)
 
         self.lcd = QLCDNumber()
+        self.lcd.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)  # 设置 LCD 数字显示的大小策略为尽可能扩展
         self.lcd.setDigitCount(5)  # 设置显示位数
         self.lcd.display("00:00")  # 初始显示值为00:00
         layout.addWidget(self.lcd)
+
+        verticalSpacer = QtWidgets.QSpacerItem(10, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        layout.addItem(verticalSpacer)
 
         self.start_button = QPushButton("开始\n你的下一次专注吧！！！")
         self.start_button.clicked.connect(self.start_countdown)
