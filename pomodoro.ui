@@ -27,21 +27,9 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,0">
        <item>
-        <widget class="QLabel" name="label">
-         <property name="maximumSize">
-          <size>
-           <width>70</width>
-           <height>70</height>
-          </size>
-         </property>
+        <widget class="QPushButton" name="pushButton">
          <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap>C:/Users/86199/Pictures/Blog/QQ图片20231118082505.jpg</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
+          <string>社区</string>
          </property>
         </widget>
        </item>
@@ -51,7 +39,11 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_7"/>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <widget class="QListWidget" name="listWidget"/>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
@@ -63,7 +55,7 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QPushButton" name="workButton">
+        <widget class="QPushButton" name="pushButton_2">
          <property name="text">
           <string>开始
 你的下一次专注吧！！！</string>
