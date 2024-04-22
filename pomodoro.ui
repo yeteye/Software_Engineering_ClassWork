@@ -37,8 +37,8 @@
         <widget class="QLabel" name="avatar">
          <property name="maximumSize">
           <size>
-           <width>110</width>
-           <height>110</height>
+           <width>115</width>
+           <height>115</height>
           </size>
          </property>
          <property name="text">
@@ -69,7 +69,15 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_3" stretch="4,2">
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_5"/>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_4">
