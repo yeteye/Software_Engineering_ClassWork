@@ -15,4 +15,3 @@ if __name__ == '__main__':
     pomodoroWindowGenerator = PomodoroWindowGenerator()
     pomodoroWindowGenerator.show()
     app.exec()
-
