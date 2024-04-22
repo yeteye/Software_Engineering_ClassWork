@@ -34,7 +34,26 @@
         </widget>
        </item>
        <item>
-        <widget class="QPlainTextEdit" name="plainTextEdit"/>
+        <widget class="QLabel" name="avatar">
+         <property name="maximumSize">
+          <size>
+           <width>110</width>
+           <height>110</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap>image/QQ图片20231118082505.jpg</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+         <property name="wordWrap">
+          <bool>false</bool>
+         </property>
+        </widget>
        </item>
       </layout>
      </item>

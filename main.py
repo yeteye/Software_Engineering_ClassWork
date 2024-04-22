@@ -8,6 +8,7 @@ class PomodoroWindowGenerator(QWidget):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        
 
 
 if __name__ == '__main__':

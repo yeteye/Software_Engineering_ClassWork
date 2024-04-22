@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'pomodoro.ui'
+## Form generated from reading UI file 'Pomodoro.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.7.0
 ##
@@ -15,8 +15,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QListWidget, QListWidgetItem,
-    QPlainTextEdit, QPushButton, QSizePolicy, QVBoxLayout,
+from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QListWidget,
+    QListWidgetItem, QPushButton, QSizePolicy, QVBoxLayout,
     QWidget)
 
 class Ui_MainWindow(object):
@@ -40,10 +40,14 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addWidget(self.pushButton)
 
-        self.plainTextEdit = QPlainTextEdit(MainWindow)
-        self.plainTextEdit.setObjectName(u"plainTextEdit")
+        self.avatar = QLabel(MainWindow)
+        self.avatar.setObjectName(u"avatar")
+        self.avatar.setMaximumSize(QSize(110, 110))
+        self.avatar.setPixmap(QPixmap(u"image/QQ\u56fe\u724720231118082505.jpg"))
+        self.avatar.setScaledContents(True)
+        self.avatar.setWordWrap(False)
 
-        self.verticalLayout_6.addWidget(self.plainTextEdit)
+        self.verticalLayout_6.addWidget(self.avatar)
 
 
         self.verticalLayout.addLayout(self.verticalLayout_6)
@@ -108,6 +112,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Pomodoro", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"\u793e\u533a", None))
+        self.avatar.setText("")
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb\n"
 "\u4f60\u7684\u4e0b\u4e00\u6b21\u4e13\u6ce8\u5427\uff01\uff01\uff01", None))
         self.relaxButton.setText(QCoreApplication.translate("MainWindow", u"\u5de5\u4f5c\u7d2f\u4e86\n"
