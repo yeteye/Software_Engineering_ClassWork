@@ -67,33 +67,16 @@
     </layout>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_3" stretch="4,2">
+    <layout class="QVBoxLayout" name="verticalLayout_3" stretch="4">
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="CountdownWidget" name="widget" native="true"/>
+       </item>
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
           <string/>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
-       <item>
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="text">
-          <string>开始
-你的下一次专注吧！！！</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="relaxButton">
-         <property name="text">
-          <string>工作累了
-休息一下吧</string>
          </property>
         </widget>
        </item>
@@ -110,6 +93,14 @@
    </item>
   </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CountdownWidget</class>
+   <extends>QWidget</extends>
+   <header>countdownwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
