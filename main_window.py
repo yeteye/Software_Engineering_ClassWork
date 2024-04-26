@@ -49,6 +49,7 @@ class Ui_MainWindow(object):
         self.avatar.setScaledContents(True)
         self.avatar.setWordWrap(False)
 
+
         self.User_Profile.addWidget(self.avatar)
 
 
@@ -112,4 +113,6 @@ class Ui_MainWindow(object):
         self.avatar.setText("")
         self.TaskCreator.setText(QCoreApplication.translate("MainWindow", u"+", None))
     # retranslateUi
+
+
 

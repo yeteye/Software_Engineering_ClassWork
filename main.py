@@ -1,5 +1,7 @@
-from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QFileDialog
+from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QFileDialog, QDialog
 from PySide6.QtGui import QMouseEvent, Qt, QPixmap, QMovie
+
+from AddTask import Ui_AddTask
 from main_window import Ui_MainWindow
 import os
 
@@ -26,15 +28,19 @@ class PomodoroWindowGenerator(QWidget):
     def createTask(self,mouseEvent: QMouseEvent):
         if mouseEvent.button() != Qt.LeftButton:
             return
+        dialog = QDialog()
+        TaskCreator_ui = Ui_AddTask()
+        TaskCreator_ui.setupUi(dialog)
+        dialog.exec()
 
     def ChangeTask(self, mouseEvent: QMouseEvent):
         if mouseEvent.button() == Qt.RightButton:
             return
 
 
-
 if __name__ == '__main__':
     app = QApplication()
     pomodoroWindowGenerator = PomodoroWindowGenerator()
     pomodoroWindowGenerator.show()
+
     app.exec()
