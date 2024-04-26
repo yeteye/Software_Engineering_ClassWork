@@ -27,7 +27,7 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(532, 413)
         icon = QIcon()
-        icon.addFile(u"C:/Users/86199/Pictures/f3006b49c9f1fc1519d2bf688fc52e70.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"image/f3006b49c9f1fc1519d2bf688fc52e70.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"#MainWindow{background-color: rgb(255, 82, 99)}\n"
 "")
@@ -57,10 +57,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_7 = QVBoxLayout()
         self.verticalLayout_7.setSpacing(1)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.addItemButton = QPushButton(MainWindow)
-        self.addItemButton.setObjectName(u"addItemButton")
+        self.TaskCreator = QPushButton(MainWindow)
+        self.TaskCreator.setObjectName(u"TaskCreator")
 
-        self.verticalLayout_7.addWidget(self.addItemButton)
+        self.verticalLayout_7.addWidget(self.TaskCreator)
 
         self.listWidget = QListWidget(MainWindow)
         self.listWidget.setObjectName(u"listWidget")
@@ -92,9 +92,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addLayout(self.verticalLayout_3)
 
         self.verticalLayout_2 = QVBoxLayout()
-#ifndef Q_OS_MAC
-        self.verticalLayout_2.setSpacing(-1)
-#endif
+        self.verticalLayout_2.setSpacing(6)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
 
         self.horizontalLayout.addLayout(self.verticalLayout_2)
@@ -112,6 +110,6 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Pomodoro", None))
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"\u793e\u533a", None))
         self.avatar.setText("")
-        self.addItemButton.setText(QCoreApplication.translate("MainWindow", u"+", None))
+        self.TaskCreator.setText(QCoreApplication.translate("MainWindow", u"+", None))
     # retranslateUi
 
