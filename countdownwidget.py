@@ -6,7 +6,7 @@ from PySide6.QtCore import QTimer
 class CountdownWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-
+        self.flag = 1
         self.time_left = 0
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_display)
@@ -23,15 +23,18 @@ class CountdownWidget(QWidget):
         layout.addItem(verticalSpacer)
 
         self.start_button = QPushButton("开始\n你的下一次专注吧！！！")
-        self.start_button.clicked.connect(self.start_countdown)
+        self.start_button.clicked.connect(self.start_countdown) #点击时，调用start_countdown
         layout.addWidget(self.start_button)
 
         self.stop_button = QPushButton("工作累了\n休息一下吧")
         self.stop_button.setEnabled(False)
-        self.stop_button.clicked.connect(self.stop_countdown)
+        self.stop_button.clicked.connect(self.stop_countdown)#点击时，调用stop_countdown
         layout.addWidget(self.stop_button)
 
+    #
     def start_countdown(self):
+        self.timer.stop()
+        self.flag = 1
         self.time_left = self.get_time_input()
         self.timer.start(1000)  # 每秒触发一次timeout信号
         self.start_button.setEnabled(False)
@@ -39,6 +42,9 @@ class CountdownWidget(QWidget):
 
     def stop_countdown(self):
         self.timer.stop()
+        self.flag = 2
+        self.time_left = self.get_time_input()
+        self.timer.start(1000)
         self.start_button.setEnabled(True)
         self.stop_button.setEnabled(False)
 
@@ -55,7 +61,23 @@ class CountdownWidget(QWidget):
         display_text = f"{minutes:02d}:{seconds:02d}"
         self.lcd.display(display_text)
 
+    def current_status(self):
+        if self.flag == 1:
+            return 1
+        elif self.flag == 2:
+            return 2
+        else:
+            return 3
+
+    def get_diy_time_input(self):
+        diytime = input("")
+        return diytime
+
     def get_time_input(self):
-        # 这里可以自定义时间输入的逻辑，比如从输入框中获取用户输入的时间，转换为秒数并返回
-        # 这里为了简单起见，直接使用固定的时间60秒
-        return 60
+        if self.current_status()==1:
+            return 1500
+        elif self.current_status()==2:
+            return 300
+        else :
+            return self.get_diy_time_input()
+
