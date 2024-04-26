@@ -11,6 +11,7 @@ class PomodoroWindowGenerator(QWidget):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.avatar.mousePressEvent = self.changeAvatar
+        self.ui.TaskCreator.mousePressEvent = self.createTask
 
     def changeAvatar(self, mouseEvent: QMouseEvent):
         if mouseEvent.button() != Qt.LeftButton:
@@ -21,6 +22,16 @@ class PomodoroWindowGenerator(QWidget):
             return
         self.avatarPath = imagePath
         self.ui.avatar.setPixmap(QPixmap(imagePath))
+
+    def createTask(self,mouseEvent: QMouseEvent):
+        if mouseEvent.button() != Qt.LeftButton:
+            return
+
+    def ChangeTask(self, mouseEvent: QMouseEvent):
+        if mouseEvent.button() == Qt.RightButton:
+            return
+
+
 
 if __name__ == '__main__':
     app = QApplication()

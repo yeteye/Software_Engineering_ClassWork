@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>image/f3006b49c9f1fc1519d2bf688fc52e70.ico</normaloff>image/f3006b49c9f1fc1519d2bf688fc52e70.ico</iconset>
+    <normaloff>C:/Users/86199/.designer/backup/image/f3006b49c9f1fc1519d2bf688fc52e70.ico</normaloff>C:/Users/86199/.designer/backup/image/f3006b49c9f1fc1519d2bf688fc52e70.ico</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">#MainWindow{background-color: rgb(255, 82, 99)}
@@ -25,9 +25,9 @@
    <item>
     <layout class="QVBoxLayout" name="verticalLayout" stretch="3,5">
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_6" stretch="0,0">
+      <layout class="QVBoxLayout" name="User_Profile" stretch="0,0">
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="community">
          <property name="text">
           <string>社区</string>
          </property>
@@ -58,7 +58,7 @@
       </layout>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout_7">
+      <layout class="QVBoxLayout" name="TaskPlace">
        <property name="spacing">
         <number>1</number>
        </property>
@@ -70,7 +70,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QListWidget" name="listWidget"/>
+        <widget class="QListWidget" name="TaskList"/>
        </item>
       </layout>
      </item>
@@ -81,14 +81,14 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
-        <widget class="CountdownWidget" name="widget" native="true"/>
+        <widget class="CountdownWidget" name="clock" native="true"/>
        </item>
       </layout>
      </item>
     </layout>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
+    <layout class="QVBoxLayout" name="pet">
      <property name="spacing">
       <number>6</number>
      </property>

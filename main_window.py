@@ -35,12 +35,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.verticalLayout = QVBoxLayout()
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout_6 = QVBoxLayout()
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.pushButton = QPushButton(MainWindow)
-        self.pushButton.setObjectName(u"pushButton")
+        self.User_Profile = QVBoxLayout()
+        self.User_Profile.setObjectName(u"User_Profile")
+        self.community = QPushButton(MainWindow)
+        self.community.setObjectName(u"community")
 
-        self.verticalLayout_6.addWidget(self.pushButton)
+        self.User_Profile.addWidget(self.community)
 
         self.avatar = QLabel(MainWindow)
         self.avatar.setObjectName(u"avatar")
@@ -49,26 +49,26 @@ class Ui_MainWindow(object):
         self.avatar.setScaledContents(True)
         self.avatar.setWordWrap(False)
 
-        self.verticalLayout_6.addWidget(self.avatar)
+        self.User_Profile.addWidget(self.avatar)
 
 
-        self.verticalLayout.addLayout(self.verticalLayout_6)
+        self.verticalLayout.addLayout(self.User_Profile)
 
-        self.verticalLayout_7 = QVBoxLayout()
-        self.verticalLayout_7.setSpacing(1)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.TaskPlace = QVBoxLayout()
+        self.TaskPlace.setSpacing(1)
+        self.TaskPlace.setObjectName(u"TaskPlace")
         self.TaskCreator = QPushButton(MainWindow)
         self.TaskCreator.setObjectName(u"TaskCreator")
 
-        self.verticalLayout_7.addWidget(self.TaskCreator)
+        self.TaskPlace.addWidget(self.TaskCreator)
 
-        self.listWidget = QListWidget(MainWindow)
-        self.listWidget.setObjectName(u"listWidget")
+        self.TaskList = QListWidget(MainWindow)
+        self.TaskList.setObjectName(u"TaskList")
 
-        self.verticalLayout_7.addWidget(self.listWidget)
+        self.TaskPlace.addWidget(self.TaskList)
 
 
-        self.verticalLayout.addLayout(self.verticalLayout_7)
+        self.verticalLayout.addLayout(self.TaskPlace)
 
         self.verticalLayout.setStretch(0, 3)
         self.verticalLayout.setStretch(1, 5)
@@ -79,10 +79,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_5 = QVBoxLayout()
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.widget = CountdownWidget(MainWindow)
-        self.widget.setObjectName(u"widget")
+        self.clock = CountdownWidget(MainWindow)
+        self.clock.setObjectName(u"clock")
 
-        self.verticalLayout_5.addWidget(self.widget)
+        self.verticalLayout_5.addWidget(self.clock)
 
 
         self.verticalLayout_3.addLayout(self.verticalLayout_5)
@@ -91,11 +91,11 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addLayout(self.verticalLayout_3)
 
-        self.verticalLayout_2 = QVBoxLayout()
-        self.verticalLayout_2.setSpacing(6)
-        self.verticalLayout_2.setObjectName(u"verticalLayout_2")
+        self.pet = QVBoxLayout()
+        self.pet.setSpacing(6)
+        self.pet.setObjectName(u"pet")
 
-        self.horizontalLayout.addLayout(self.verticalLayout_2)
+        self.horizontalLayout.addLayout(self.pet)
 
         self.horizontalLayout.setStretch(0, 15)
         self.horizontalLayout.setStretch(1, 25)
@@ -108,7 +108,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Pomodoro", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"\u793e\u533a", None))
+        self.community.setText(QCoreApplication.translate("MainWindow", u"\u793e\u533a", None))
         self.avatar.setText("")
         self.TaskCreator.setText(QCoreApplication.translate("MainWindow", u"+", None))
     # retranslateUi
