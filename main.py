@@ -4,12 +4,23 @@ from main_window import Ui_MainWindow
 import os
 
 class PomodoroWindowGenerator(QWidget):
+
     def __init__(self):
         super().__init__()
+        self.avatarPath = "Images/novPzrqvE3.jpg"
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        
+        self.ui.avatar.mousePressEvent = self.changeAvatar
 
+    def changeAvatar(self, mouseEvent: QMouseEvent):
+        if mouseEvent.button() != Qt.LeftButton:
+            return
+        r = QFileDialog.getOpenFileName(parent=self, caption="Select Avatar", filter="Images (*.png *.jpg)")
+        imagePath = r[0]
+        if not imagePath:
+            return
+        self.avatarPath = imagePath
+        self.ui.avatar.setPixmap(QPixmap(imagePath))
 
 if __name__ == '__main__':
     app = QApplication()
