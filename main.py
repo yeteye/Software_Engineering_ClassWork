@@ -1,42 +1,5 @@
-from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QFileDialog, QDialog
-from PySide6.QtGui import QMouseEvent, Qt, QPixmap, QMovie
-
-from AddTask import Ui_AddTask
-from main_window import Ui_MainWindow
-import os
-
-class PomodoroWindowGenerator(QWidget):
-
-    def __init__(self):
-        super().__init__()
-        self.avatarPath = "Images/novPzrqvE3.jpg"
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
-        self.ui.avatar.mousePressEvent = self.changeAvatar
-        self.ui.TaskCreator.mousePressEvent = self.createTask
-
-    def changeAvatar(self, mouseEvent: QMouseEvent):
-        if mouseEvent.button() != Qt.LeftButton:
-            return
-        r = QFileDialog.getOpenFileName(parent=self, caption="Select Avatar", filter="Images (*.png *.jpg)")
-        imagePath = r[0]
-        if not imagePath:
-            return
-        self.avatarPath = imagePath
-        self.ui.avatar.setPixmap(QPixmap(imagePath))
-
-    def createTask(self,mouseEvent: QMouseEvent):
-        if mouseEvent.button() != Qt.LeftButton:
-            return
-        dialog = QDialog()
-        TaskCreator_ui = Ui_AddTask()
-        TaskCreator_ui.setupUi(dialog)
-        dialog.exec()
-
-    def ChangeTask(self, mouseEvent: QMouseEvent):
-        if mouseEvent.button() == Qt.RightButton:
-            return
-
+from PySide6.QtWidgets import QApplication
+from PomodoroWindowGenerator import PomodoroWindowGenerator
 
 if __name__ == '__main__':
     app = QApplication()

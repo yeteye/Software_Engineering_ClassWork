@@ -49,7 +49,6 @@ class Ui_MainWindow(object):
         self.avatar.setScaledContents(True)
         self.avatar.setWordWrap(False)
 
-
         self.User_Profile.addWidget(self.avatar)
 
 
@@ -76,8 +75,8 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout.addLayout(self.verticalLayout)
 
-        self.verticalLayout_3 = QVBoxLayout()
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.ClockPlace = QVBoxLayout()
+        self.ClockPlace.setObjectName(u"ClockPlace")
         self.verticalLayout_5 = QVBoxLayout()
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.clock = CountdownWidget(MainWindow)
@@ -86,11 +85,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.addWidget(self.clock)
 
 
-        self.verticalLayout_3.addLayout(self.verticalLayout_5)
+        self.ClockPlace.addLayout(self.verticalLayout_5)
 
-        self.verticalLayout_3.setStretch(0, 4)
+        self.ClockPlace.setStretch(0, 4)
 
-        self.horizontalLayout.addLayout(self.verticalLayout_3)
+        self.horizontalLayout.addLayout(self.ClockPlace)
 
         self.pet = QVBoxLayout()
         self.pet.setSpacing(6)
@@ -113,6 +112,4 @@ class Ui_MainWindow(object):
         self.avatar.setText("")
         self.TaskCreator.setText(QCoreApplication.translate("MainWindow", u"+", None))
     # retranslateUi
-
-
 
