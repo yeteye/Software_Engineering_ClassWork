@@ -1,17 +1,21 @@
 from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QFileDialog, QDialog
 from PySide6.QtGui import QMouseEvent, Qt, QPixmap, QMovie
+import json
 
 from AddTask import Ui_AddTask
 from main_window import Ui_MainWindow
 import os
 
+
 class PomodoroWindowGenerator(QWidget):
 
     def __init__(self):
         super().__init__()
-        self.avatarPath = "Images/novPzrqvE3.jpg"
+        self.profile = self.loadProfile()
+        self.avatarPath = self.profile['avatar']
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.ui.avatar.setPixmap(QPixmap(self.avatarPath))
         self.ui.avatar.mousePressEvent = self.changeAvatar
         self.ui.TaskCreator.mousePressEvent = self.createTask
 
@@ -23,9 +27,10 @@ class PomodoroWindowGenerator(QWidget):
         if not imagePath:
             return
         self.avatarPath = imagePath
+        self.updateProfile('avatar', imagePath)
         self.ui.avatar.setPixmap(QPixmap(imagePath))
 
-    def createTask(self,mouseEvent: QMouseEvent):
+    def createTask(self, mouseEvent: QMouseEvent):
         if mouseEvent.button() != Qt.LeftButton:
             return
         dialog = QDialog()
@@ -37,4 +42,15 @@ class PomodoroWindowGenerator(QWidget):
         if mouseEvent.button() == Qt.RightButton:
             return
 
+    def loadProfile(self):
+        profileFile = open("profile.json")
+        profile = json.load(profileFile)
+        profileFile.close()
+        return profile
 
+    def updateProfile(self, item, value):
+        profileFile = open("profile.json", "w")
+        profile = self.profile
+        profile[item] = value
+        profileFile.write(json.dumps(profile, indent=4))
+        profileFile.close()

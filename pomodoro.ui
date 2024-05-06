@@ -45,7 +45,7 @@
           <string/>
          </property>
          <property name="pixmap">
-          <pixmap>image/QQ图片20231118082505.jpg</pixmap>
+          <pixmap></pixmap>
          </property>
          <property name="scaledContents">
           <bool>true</bool>

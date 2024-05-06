@@ -45,7 +45,6 @@ class Ui_MainWindow(object):
         self.avatar = QLabel(MainWindow)
         self.avatar.setObjectName(u"avatar")
         self.avatar.setMaximumSize(QSize(115, 115))
-        self.avatar.setPixmap(QPixmap(u"image/QQ\u56fe\u724720231118082505.jpg"))
         self.avatar.setScaledContents(True)
         self.avatar.setWordWrap(False)
 
