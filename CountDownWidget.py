@@ -14,21 +14,29 @@ class CountdownWidget(QWidget):
         layout = QVBoxLayout(self)
 
         self.lcd = QLCDNumber()
-        self.lcd.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)  # 设置 LCD 数字显示的大小策略为尽可能扩展
+        self.lcd.setSizePolicy(
+            QSizePolicy.Expanding, QSizePolicy.Expanding
+        )  # 设置 LCD 数字显示的大小策略为尽可能扩展
         self.lcd.setDigitCount(5)  # 设置显示位数
         self.lcd.display("00:00")  # 初始显示值为00:00
         layout.addWidget(self.lcd)
 
-        verticalSpacer = QtWidgets.QSpacerItem(10, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        verticalSpacer = QtWidgets.QSpacerItem(
+            10, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding
+        )
         layout.addItem(verticalSpacer)
 
         self.start_button = QPushButton("开始\n你的下一次专注吧！！！")
-        self.start_button.clicked.connect(self.start_countdown) #点击时，调用start_countdown
+        self.start_button.clicked.connect(
+            self.start_countdown
+        )  # 点击时，调用start_countdown
         layout.addWidget(self.start_button)
 
         self.stop_button = QPushButton("工作累了\n休息一下吧")
         self.stop_button.setEnabled(False)
-        self.stop_button.clicked.connect(self.stop_countdown)#点击时，调用stop_countdown
+        self.stop_button.clicked.connect(
+            self.stop_countdown
+        )  # 点击时，调用stop_countdown
         layout.addWidget(self.stop_button)
 
     #
@@ -74,10 +82,9 @@ class CountdownWidget(QWidget):
         return diytime
 
     def get_time_input(self):
-        if self.current_status()==1:
+        if self.current_status() == 1:
             return 1500
-        elif self.current_status()==2:
+        elif self.current_status() == 2:
             return 300
-        else :
+        else:
             return self.get_diy_time_input()
-

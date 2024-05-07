@@ -12,7 +12,7 @@ class PomodoroWindowGenerator(QWidget):
     def __init__(self):
         super().__init__()
         self.profile = self.loadProfile()
-        self.avatarPath = self.profile['avatar']
+        self.avatarPath = self.profile["avatar"]
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.avatar.setPixmap(QPixmap(self.avatarPath))
@@ -22,12 +22,14 @@ class PomodoroWindowGenerator(QWidget):
     def changeAvatar(self, mouseEvent: QMouseEvent):
         if mouseEvent.button() != Qt.LeftButton:
             return
-        r = QFileDialog.getOpenFileName(parent=self, caption="Select Avatar", filter="Images (*.png *.jpg)")
+        r = QFileDialog.getOpenFileName(
+            parent=self, caption="Select Avatar", filter="Images (*.png *.jpg)"
+        )
         imagePath = r[0]
         if not imagePath:
             return
         self.avatarPath = imagePath
-        self.updateProfile('avatar', imagePath)
+        self.updateProfile("avatar", imagePath)
         self.ui.avatar.setPixmap(QPixmap(imagePath))
 
     def createTask(self, mouseEvent: QMouseEvent):
@@ -48,7 +50,13 @@ class PomodoroWindowGenerator(QWidget):
         try:
             profile = json.load(profileFile)
         except ValueError:
-            profile = {'avatar': '', 'level': '', 'exp': '', 'name': '', 'task_times': ''}
+            profile = {
+                "avatar": "",
+                "level": "",
+                "exp": "",
+                "name": "",
+                "task_times": "",
+            }
         profileFile.close()
         return profile
 

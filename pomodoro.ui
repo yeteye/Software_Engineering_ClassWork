@@ -100,7 +100,7 @@
   <customwidget>
    <class>CountdownWidget</class>
    <extends>QWidget</extends>
-   <header>countdownwidget.h</header>
+   <header>CountDownWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
