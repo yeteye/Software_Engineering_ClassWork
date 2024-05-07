@@ -18,7 +18,10 @@ class TaskGenerator(QDialog):
         self.accept()
 
     def loadTask(self):
-        tasklistFile = open("tasklist.json", "w")
+        try:
+            tasklistFile = open("tasklist.json")
+        except FileNotFoundError:
+            tasklistFile = open("tasklist.json", "w")
         try:
             tasklist = json.load(tasklistFile)
         except ValueError:
@@ -28,6 +31,12 @@ class TaskGenerator(QDialog):
 
     def addTask(self, name, time):
         self.tasklist.update({name: time})
+        tasklistFile = open("tasklist.json", "w")
+        tasklistFile.write(json.dumps(self.tasklist, indent=4))
+        tasklistFile.close()
+
+    def deleteTask(self, name):
+        self.tasklist.pop(name)
         tasklistFile = open("tasklist.json", "w")
         tasklistFile.write(json.dumps(self.tasklist, indent=4))
         tasklistFile.close()

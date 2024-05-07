@@ -41,14 +41,20 @@ class PomodoroWindowGenerator(QWidget):
             return
 
     def loadProfile(self):
-        profileFile = open("profile.json")
-        profile = json.load(profileFile)
+        try:
+            profileFile = open("profile.json")
+        except FileNotFoundError:
+            profileFile = open("profile.json", "w")
+        try:
+            profile = json.load(profileFile)
+        except ValueError:
+            profile = {'avatar': '', 'level': '', 'exp': '', 'name': '', 'task_times': ''}
         profileFile.close()
         return profile
 
     def updateProfile(self, item, value):
-        profileFile = open("profile.json", "w")
         profile = self.profile
         profile[item] = value
+        profileFile = open("profile.json", "w")
         profileFile.write(json.dumps(profile, indent=4))
         profileFile.close()
