@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>265</width>
-    <height>178</height>
+    <width>305</width>
+    <height>203</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -31,13 +31,35 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="3,4">
+    <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="3,0,4">
      <item>
       <widget class="QLabel" name="label">
+       <property name="layoutDirection">
+        <enum>Qt::LayoutDirection::RightToLeft</enum>
+       </property>
        <property name="text">
         <string>New Task Name</string>
        </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
       </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
      <item>
       <widget class="QLineEdit" name="lineEdit"/>
@@ -45,7 +67,7 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,3">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,0,3">
      <item>
       <widget class="QLabel" name="label_2">
        <property name="layoutDirection">
@@ -61,6 +83,19 @@
         <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
      <item>
       <widget class="QTimeEdit" name="timeEdit">

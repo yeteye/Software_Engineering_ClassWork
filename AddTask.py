@@ -17,13 +17,13 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QDialog, QDialogButtonBox,
     QHBoxLayout, QLabel, QLineEdit, QSizePolicy,
-    QTimeEdit, QVBoxLayout, QWidget)
+    QSpacerItem, QTimeEdit, QVBoxLayout, QWidget)
 
 class Ui_AddTask(object):
     def setupUi(self, AddTask):
         if not AddTask.objectName():
             AddTask.setObjectName(u"AddTask")
-        AddTask.resize(265, 178)
+        AddTask.resize(305, 203)
         sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -39,8 +39,15 @@ class Ui_AddTask(object):
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
         self.label = QLabel(AddTask)
         self.label.setObjectName(u"label")
+        self.label.setLayoutDirection(Qt.LayoutDirection.RightToLeft)
+        self.label.setScaledContents(True)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         self.horizontalLayout_2.addWidget(self.label)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer)
 
         self.lineEdit = QLineEdit(AddTask)
         self.lineEdit.setObjectName(u"lineEdit")
@@ -48,7 +55,7 @@ class Ui_AddTask(object):
         self.horizontalLayout_2.addWidget(self.lineEdit)
 
         self.horizontalLayout_2.setStretch(0, 3)
-        self.horizontalLayout_2.setStretch(1, 4)
+        self.horizontalLayout_2.setStretch(2, 4)
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
 
@@ -62,13 +69,17 @@ class Ui_AddTask(object):
 
         self.horizontalLayout.addWidget(self.label_2)
 
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout.addItem(self.horizontalSpacer_2)
+
         self.timeEdit = QTimeEdit(AddTask)
         self.timeEdit.setObjectName(u"timeEdit")
 
         self.horizontalLayout.addWidget(self.timeEdit)
 
         self.horizontalLayout.setStretch(0, 2)
-        self.horizontalLayout.setStretch(1, 3)
+        self.horizontalLayout.setStretch(2, 3)
 
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
