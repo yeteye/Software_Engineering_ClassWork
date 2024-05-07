@@ -9,7 +9,7 @@ class TaskGenerator(QDialog):
         self.tasklist = self.loadTask()
         self.ui = Ui_AddTask()
         self.ui.setupUi(self)
-        self.ui.buttonBox.clicked.connect(self.on_accepted)
+        self.ui.buttonBox.accepted.connect(self.on_accepted)
 
     def on_accepted(self):
         name = self.ui.lineEdit.text()
