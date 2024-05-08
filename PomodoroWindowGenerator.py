@@ -4,7 +4,7 @@ import json
 
 from main_window import Ui_MainWindow
 from TaskGenerator import TaskGenerator
-import os
+
 
 
 class PomodoroWindowGenerator(QWidget):
