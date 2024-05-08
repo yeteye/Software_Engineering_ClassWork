@@ -48,9 +48,11 @@ class LevelSystem:
         else:
             return current_level * 100
 
-    def level_calculate(self):
+    def levelCalculate(self):
         while True:
             exp_to_next_level = self.experience_to_next_level()
+            if exp_to_next_level == 0:  #当等级为100级时不再升级
+                break
             if self.data['exp'] >= exp_to_next_level:
                 self.data['exp'] -= exp_to_next_level
                 self.data['level'] += 1
