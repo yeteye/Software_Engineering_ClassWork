@@ -1,4 +1,5 @@
-from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel
+from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel, QVBoxLayout, QSizePolicy
+from PySide6.QtCore import Qt
 
 
 class Task(QWidget):
@@ -12,9 +13,11 @@ class Task(QWidget):
         # 创建水平布局
         layout = QHBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
+        layout.setAlignment(Qt.AlignCenter)  # 设置布局中部件的对齐方式为居中对齐
 
-        # 创建显示任务名的标签
+        # 创建显示任务名的标签，并设置居中对齐
         self.nameLabel = QLabel(self.name)
+        self.nameLabel.setAlignment(Qt.AlignCenter)  # 设置标签的文本对齐方式为居中对齐
         layout.addWidget(self.nameLabel)
 
         # 设置固定高度
@@ -22,4 +25,4 @@ class Task(QWidget):
 
         # 设置自适应宽度
         self.nameLabel.adjustSize()
-        self.setFixedWidth(self.nameLabel.width())  # 宽度根据任务名的长度自适应
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)  # 宽度自适应
