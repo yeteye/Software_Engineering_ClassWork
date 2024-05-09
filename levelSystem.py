@@ -1,6 +1,4 @@
 import json
-
-
 class LevelSystem:
     def __init__(self):
         self.filename = "profile.json"

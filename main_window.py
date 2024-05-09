@@ -15,9 +15,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QListWidget,
-    QListWidgetItem, QPushButton, QSizePolicy, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QPushButton,
+    QScrollArea, QSizePolicy, QVBoxLayout, QWidget)
 
 from CountDownWidget import CountdownWidget
 
@@ -53,16 +52,21 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.User_Profile)
 
-        self.TaskPlace = QVBoxLayout()
-        self.TaskPlace.setSpacing(1)
-        self.TaskPlace.setObjectName(u"TaskPlace")
         self.TaskCreator = QPushButton(MainWindow)
         self.TaskCreator.setObjectName(u"TaskCreator")
 
-        self.TaskPlace.addWidget(self.TaskCreator)
+        self.verticalLayout.addWidget(self.TaskCreator)
 
-        self.TaskList = QListWidget(MainWindow)
+        self.TaskPlace = QVBoxLayout()
+        self.TaskPlace.setSpacing(1)
+        self.TaskPlace.setObjectName(u"TaskPlace")
+        self.TaskList = QScrollArea(MainWindow)
         self.TaskList.setObjectName(u"TaskList")
+        self.TaskList.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 102, 219))
+        self.TaskList.setWidget(self.scrollAreaWidgetContents)
 
         self.TaskPlace.addWidget(self.TaskList)
 
@@ -70,7 +74,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addLayout(self.TaskPlace)
 
         self.verticalLayout.setStretch(0, 3)
-        self.verticalLayout.setStretch(1, 5)
+        self.verticalLayout.setStretch(2, 5)
 
         self.horizontalLayout.addLayout(self.verticalLayout)
 

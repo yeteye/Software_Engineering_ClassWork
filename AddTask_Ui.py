@@ -94,6 +94,9 @@ class Ui_AddTask(object):
         self.retranslateUi(AddTask)
         self.buttonBox.rejected.connect(AddTask.reject)
 
+
+        #self.buttonBox.accepted.connect(AddTask.accept)
+
         QMetaObject.connectSlotsByName(AddTask)
     # setupUi
 
