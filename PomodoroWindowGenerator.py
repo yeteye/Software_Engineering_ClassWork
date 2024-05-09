@@ -1,3 +1,5 @@
+from asyncio import sleep, wait
+
 from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QFileDialog, QDialog, QDialogButtonBox, QLineEdit, \
     QScrollArea, QVBoxLayout, QFrame
 from PySide6.QtGui import QMouseEvent, Qt, QPixmap, QMovie
@@ -54,6 +56,7 @@ class PomodoroWindowGenerator(QWidget):
         self.TaskCreator_ui.setupUi(dialog)
         # self.TaskCreator_ui = TaskGenerator()
         # self.TaskCreator_ui.ui.setupUi(dialog)
+
         dialog.exec()
 
 

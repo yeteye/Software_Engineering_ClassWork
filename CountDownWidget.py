@@ -7,7 +7,7 @@ class CountdownWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.flag = 1
-        self.time_left = 0
+        self.time_left = self.time_Update()
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_display)
 
@@ -41,20 +41,20 @@ class CountdownWidget(QWidget):
 
     #
     def start_countdown(self):
+        self.time_Update()
         self.timer.stop()
-        self.flag = 1
-        self.time_left = self.get_time_input()
         self.timer.start(1000)  # 每秒触发一次timeout信号
         self.start_button.setEnabled(False)
         self.stop_button.setEnabled(True)
 
     def stop_countdown(self):
-        self.timer.stop()
         self.flag = 2
-        self.time_left = self.get_time_input()
+        self.time_Update()
+        self.timer.stop()
         self.timer.start(1000)
         self.start_button.setEnabled(True)
         self.stop_button.setEnabled(False)
+        self.flag = 1
 
     def update_display(self):
         self.time_left -= 1
@@ -69,22 +69,8 @@ class CountdownWidget(QWidget):
         display_text = f"{minutes:02d}:{seconds:02d}"
         self.lcd.display(display_text)
 
-    def current_status(self):
+    def time_Update(self):
         if self.flag == 1:
-            return 1
+            self.time_left = 1500
         elif self.flag == 2:
-            return 2
-        else:
-            return 3
-
-    def get_diy_time_input(self):
-        diytime = input("")
-        return diytime
-
-    def get_time_input(self):
-        if self.current_status() == 1:
-            return 1500
-        elif self.current_status() == 2:
-            return 300
-        else:
-            return self.get_diy_time_input()
+            self.time_left = 300

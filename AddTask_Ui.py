@@ -107,4 +107,3 @@ class Ui_AddTask(object):
         self.timeEdit.setDisplayFormat(QCoreApplication.translate("AddTask", u"mm:ss", None))
 
     # retranslateUi
-

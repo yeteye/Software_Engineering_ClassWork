@@ -16,12 +16,15 @@ class AddTaskWindow(QDialog, Ui_AddTask):
 
 
     def CreateTask(self):
-        task_name = self.lineEdit.text()
-        task_time = self.timeEdit.time().minute() * 60 + self.timeEdit.time().second()
-        # 创建Task对象并设置属性
-        task = Task(task_name, task_time)
+        if self.lineEdit.text() == "" or self.timeEdit.time().minute() * 60 + self.timeEdit.time().second() == 0:
+            return
+        else:
+            task_name = self.lineEdit.text()
+            task_time = self.timeEdit.time().minute() * 60 + self.timeEdit.time().second()
 
-        # 将Task添加到TaskList中
-        self.FatherWindow.AddTaskToList(task)
-        print(12)
+            # 创建Task对象并设置属性
+            task = Task(task_name, task_time, self)
+
+            # 将Task添加到TaskList中
+            self.FatherWindow.AddTaskToList(task)
         return
