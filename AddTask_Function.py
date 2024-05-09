@@ -12,22 +12,15 @@ class AddTaskWindow(QDialog, Ui_AddTask):
         self.setupUi(self)
         self.FatherWindow = PomodoroWindowGerner
         Ok_Button = self.buttonBox.button(QDialogButtonBox.Ok)
-        Ok_Button.mousePressEvent = self.CreateTask
+        Ok_Button.clicked.connect(self.CreateTask())
 
 
-    def CreateTask(self, mouseEvent: QMouseEvent):
-        print(12)
-        # task_name = self.lineEdit.text()
-        # task_time = self.timeEdit.time()
-        #
-        # # 创建Task对象并设置属性
-        # task = Task()
-        # task.title = task_name
-        # task.timeLast = task_time
-        #
-        # # 将Task添加到TaskList中
-        # self.FatherWindow.AddTaskToList(task)
-        #
-        # # 关闭AddTask的UI窗口
-        # self.close()
+    def CreateTask(self):
+        task_name = self.lineEdit.text()
+        task_time = self.timeEdit.time().minute() * 60 + self.timeEdit.time().second()
+        # 创建Task对象并设置属性
+        task = Task(task_name, task_time)
+
+        # 将Task添加到TaskList中
+        self.FatherWindow.AddTaskToList(task)
         return

@@ -37,11 +37,13 @@ class PomodoroWindowGenerator(QWidget):
             return
         dialog = QDialog()
         self.TaskCreator_ui = AddTaskWindow(self)
-        #self.TaskCreator_ui = TaskGenerator()
         self.TaskCreator_ui.setupUi(dialog)
+        # self.TaskCreator_ui = TaskGenerator()
+        # self.TaskCreator_ui.ui.setupUi(dialog)
         dialog.exec()
 
     def ChangeTask(self, mouseEvent: QMouseEvent):##更改任务的信息
+        print(12)
         if mouseEvent.button() == Qt.RightButton:
             return
 
@@ -59,5 +61,5 @@ class PomodoroWindowGenerator(QWidget):
         profileFile.close()
 
     def AddTaskToList(self,Task):
-        self.ui.TaskList.append(Task)
+        self.ui.TaskList.setWidget(Task)
         return

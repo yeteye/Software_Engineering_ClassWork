@@ -9,15 +9,16 @@
 ################################################################################
 
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
-    QMetaObject, QObject, QPoint, QRect,
-    QSize, QTime, QUrl, Qt)
+                            QMetaObject, QObject, QPoint, QRect,
+                            QSize, QTime, QUrl, Qt)
 from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
-    QFont, QFontDatabase, QGradient, QIcon,
-    QImage, QKeySequence, QLinearGradient, QPainter,
-    QPalette, QPixmap, QRadialGradient, QTransform)
+                           QFont, QFontDatabase, QGradient, QIcon,
+                           QImage, QKeySequence, QLinearGradient, QPainter,
+                           QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QDialog, QDialogButtonBox,
-    QHBoxLayout, QLabel, QLineEdit, QSizePolicy,
-    QSpacerItem, QTimeEdit, QVBoxLayout, QWidget)
+                               QHBoxLayout, QLabel, QLineEdit, QSizePolicy,
+                               QSpacerItem, QTimeEdit, QVBoxLayout, QWidget)
+
 
 class Ui_AddTask(object):
     def setupUi(self, AddTask):
@@ -86,18 +87,17 @@ class Ui_AddTask(object):
         self.buttonBox = QDialogButtonBox(AddTask)
         self.buttonBox.setObjectName(u"buttonBox")
         self.buttonBox.setOrientation(Qt.Orientation.Horizontal)
-        self.buttonBox.setStandardButtons(QDialogButtonBox.StandardButton.Cancel|QDialogButtonBox.StandardButton.Ok)
+        self.buttonBox.setStandardButtons(QDialogButtonBox.StandardButton.Cancel | QDialogButtonBox.StandardButton.Ok)
 
         self.verticalLayout_2.addWidget(self.buttonBox)
-
 
         self.retranslateUi(AddTask)
         self.buttonBox.rejected.connect(AddTask.reject)
 
-
-        #self.buttonBox.accepted.connect(AddTask.accept)
+        self.buttonBox.accepted.connect(self.CreateTask)
 
         QMetaObject.connectSlotsByName(AddTask)
+
     # setupUi
 
     def retranslateUi(self, AddTask):
@@ -105,5 +105,6 @@ class Ui_AddTask(object):
         self.label.setText(QCoreApplication.translate("AddTask", u"New Task Name", None))
         self.label_2.setText(QCoreApplication.translate("AddTask", u"The Lasting Time", None))
         self.timeEdit.setDisplayFormat(QCoreApplication.translate("AddTask", u"mm:ss", None))
+
     # retranslateUi
 
