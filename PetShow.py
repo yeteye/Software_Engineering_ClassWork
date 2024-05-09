@@ -2,6 +2,8 @@ from PySide6.QtCore import Qt
 from PySide6.QtGui import QMovie
 from PySide6.QtWidgets import QWidget, QLabel, QVBoxLayout
 from PySide6.QtCore import QSize
+
+
 class GIFWindow(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -23,5 +25,3 @@ class GIFWindow(QWidget):
         layout = QVBoxLayout(self)
         layout.addWidget(self.gif_label)
         self.setLayout(layout)
-
-
