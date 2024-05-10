@@ -1,7 +1,8 @@
 from PySide6 import QtGui, QtWidgets
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber, QSizePolicy
 from PySide6.QtCore import QTimer
-
+import json
+from levelSystem import LevelSystem
 
 class CountdownWidget(QWidget):
     def __init__(self, parent=None):
@@ -69,6 +70,19 @@ class CountdownWidget(QWidget):
             self.stop_button.setEnabled(False)
             self.time_left = 0
             self.flag = 1
+            try:
+                with open("profile.json", 'r') as f:
+                    data = json.load(f)
+                    data['plannedTime'] = self.timeLast
+            except FileNotFoundError:
+                data = {
+                    'level': 1,
+                    'exp': 0,
+                    'task_times': 0,
+                    'plannedTime': self.timeLast
+                }
+            with open("profile.json", 'w') as f:
+                json.dump(data, f)
 
 
         self.LcdDisplay(self.time_left)
