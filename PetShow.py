@@ -10,7 +10,7 @@ with open('profile.json', 'r') as f:
     data = json.load(f)
 
 class GIFWindow(QWidget):
-    def __init__(self, parent=None):
+    def __init__(self,data, parent=None):
         super().__init__(parent)
 
         # 创建QMovie对象并加载GIF文件
@@ -26,42 +26,32 @@ class GIFWindow(QWidget):
         # 开始动画
         self.movie.start()
 
+
         # 创建布局并将QLabel添加到其中
         layout = QVBoxLayout(self)
         layout.addWidget(self.gif_label)
         self.setLayout(layout)
 
-    #def mousePressEvent(self, event):
-
-
-    def count_exp(self,data):
-        self.level = data['level']
-        self.exp = data['exp']
-        if self.exp>=10 :
-            self.level += 1
-            exp = 0
-
-
-        self.cexp.connect(self.update_display)
-
-        layout = QVBoxLayout(self)
-
-        self.lcd = QLCDNumber()
-        self.lcd.setSizePolicy(
-            QSizePolicy.Expanding, QSizePolicy.Expanding
-        )  # 设置 LCD 数字显示的大小策略为尽可能扩展
-        self.lcd.setDigitCount(5)  # 设置显示位数
-        self.lcd.display("00:00")  # 初始显示值为00:00
-        layout.addWidget(self.lcd)
-
-        display_text = f"{self.level:02d}:{self.exp:02d}"
-        self.lcd.display(display_text)
-
         verticalSpacer = QtWidgets.QSpacerItem(
             10, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding
         )
         layout.addItem(verticalSpacer)
+        #def mousePressEvent(self, event):
 
+
+    def count_exp(self):
+        self.level = 1
+        self.exp = 1
+        if self.exp >= 10:
+            self.level += 1
+            self.exp = 0
+
+        display_text = f"{self.level:02d}:{self.exp:02d}"
+        self.gif_label.setText(display_text)
+
+        layout = QVBoxLayout(self)
+        layout.addWidget(self.gif_label)
+        self.setLayout(layout)
 
 
 

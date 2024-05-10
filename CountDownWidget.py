@@ -21,10 +21,12 @@ class CountdownWidget(QWidget):
         self.lcd.display("00:00")  # 初始显示值为00:00
         layout.addWidget(self.lcd)
 
+        #设置间距
         verticalSpacer = QtWidgets.QSpacerItem(
             10, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding
         )
         layout.addItem(verticalSpacer)
+
 
         self.start_button = QPushButton("开始\n你的下一次专注吧！！！")
         self.start_button.clicked.connect(
