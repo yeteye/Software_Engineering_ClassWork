@@ -20,7 +20,7 @@ from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QPushButton,
 
 from CountDownWidget import CountdownWidget
 from PetShow import GIFWindow
-
+from ExpShow import Exp_Show
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -102,13 +102,21 @@ class Ui_MainWindow(object):
         self.pet.setObjectName(u"pet")
         self.verticalLayout_4 = QVBoxLayout()
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.Show = GIFWindow(MainWindow)
-        self.Show.setObjectName(u"Show")
-        self.verticalLayout_4.addWidget(self.Show)
+        self.petShow = GIFWindow(MainWindow)
+        self.petShow.setObjectName(u"Show")
+        self.verticalLayout_4.addWidget(self.petShow)
 
         self.pet.addLayout(self.verticalLayout_4)
         self.pet.setStretch(2, 0)
 
+        self.verticalLayout_3 = QVBoxLayout()
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.expShow = Exp_Show(MainWindow)
+        self.expShow.setObjectName(u"Show")
+        self.verticalLayout_3.addWidget(self.expShow)
+
+        self.pet.addLayout(self.verticalLayout_3)
+        self.pet.setStretch(2, 0)
 
         self.horizontalLayout.addLayout(self.pet)
 

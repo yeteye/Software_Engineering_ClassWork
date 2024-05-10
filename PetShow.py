@@ -3,14 +3,9 @@ from PySide6.QtGui import QMovie
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import QWidget, QLabel, QVBoxLayout ,QLCDNumber ,QSizePolicy
 from PySide6.QtCore import QSize
-import json
-
-# 打开并读取json文件
-with open('profile.json', 'r') as f:
-    data = json.load(f)
 
 class GIFWindow(QWidget):
-    def __init__(self,data, parent=None):
+    def __init__(self, parent=None):
         super().__init__(parent)
 
         # 创建QMovie对象并加载GIF文件
@@ -39,19 +34,9 @@ class GIFWindow(QWidget):
         #def mousePressEvent(self, event):
 
 
-    def count_exp(self):
-        self.level = 1
-        self.exp = 1
-        if self.exp >= 10:
-            self.level += 1
-            self.exp = 0
 
-        display_text = f"{self.level:02d}:{self.exp:02d}"
-        self.gif_label.setText(display_text)
 
-        layout = QVBoxLayout(self)
-        layout.addWidget(self.gif_label)
-        self.setLayout(layout)
+
 
 
 
