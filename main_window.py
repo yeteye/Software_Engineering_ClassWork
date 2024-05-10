@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.TaskCreator)
 
         self.TaskPlace = QVBoxLayout()
-        self.TaskPlace.setSpacing(0)
+        self.TaskPlace.setSpacing(2)
         self.TaskPlace.setObjectName(u"TaskPlace")
         self.TaskList = QScrollArea(MainWindow)
         self.TaskList.setObjectName(u"TaskList")
@@ -69,7 +69,7 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
         self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 102, 219))
         self.scrollAreaWidgetContents_layout = QVBoxLayout(self.scrollAreaWidgetContents)
-        self.scrollAreaWidgetContents_layout.setSpacing(0)
+        self.scrollAreaWidgetContents_layout.setSpacing(2)
         self.scrollAreaWidgetContents.setLayout(self.scrollAreaWidgetContents_layout)
         self.TaskList.setWidget(self.scrollAreaWidgetContents)
         self.TaskList.setWidgetResizable(True)

@@ -1,6 +1,11 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QMenu
 
+class Mene(QMenu):
+    def __init__(self):
+        super().__init__()
+        deleteAct = self.addAction("Delete")
+
 class Example(QMainWindow):
     def __init__(self):
         super().__init__()

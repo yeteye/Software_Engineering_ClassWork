@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel, QVBoxLayout, QSizePolicy
+from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel, QVBoxLayout, QSizePolicy, QMenu
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QMouseEvent
 
@@ -34,8 +34,18 @@ class Task(QWidget):
                 self.creatorWindow.FatherWindow.ui.clock.flag = 3
                 self.creatorWindow.FatherWindow.ui.clock.timeLast = self.timeLast
                 self.creatorWindow.FatherWindow.ui.clock.LcdDisplay(self.timeLast)
-            else:
-                self.layout().removeWidget(self.nameLabel)
-                self.nameLabel.deleteLater()
-                self.deleteLater()
         return
+
+    def contextMenuEvent(self, event: QMouseEvent):
+        menu = QMenu(self)
+        menu.setStyleSheet("QMenu { border-radius: 10px; }")
+        DeleteTask = menu.addAction("Delete")
+        EditTask = menu.addAction("Edit")
+        action = menu.exec_(self.mapToGlobal(event.pos()))
+        if action == DeleteTask:
+            self.layout().removeWidget(self.nameLabel)
+            self.nameLabel.deleteLater()
+            self.deleteLater()
+        if action == EditTask:
+            return
+
