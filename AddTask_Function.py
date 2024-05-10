@@ -7,7 +7,7 @@ from PySide6.QtWidgets import QDialog
 from AddTask_Ui import Ui_AddTask
 
 class AddTaskWindow(QDialog, Ui_AddTask):
-    def __init__(self, PomodoroWindowGerner):
+    def __init__(self, PomodoroWindowGerner):   #主界面显示添加任务界面
         super().__init__()
         self.setupUi(self)
         self.FatherWindow = PomodoroWindowGerner
