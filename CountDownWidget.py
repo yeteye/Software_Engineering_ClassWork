@@ -45,6 +45,7 @@ class CountdownWidget(QWidget):
     #
     def start_countdown(self):
         self.time_Update()
+        self.LcdDisplay(self.time_left)
         self.timer.stop()
         self.timer.start(1000)  # 每秒触发一次timeout信号
         self.start_button.setEnabled(False)
@@ -53,6 +54,7 @@ class CountdownWidget(QWidget):
     def stop_countdown(self):
         self.flag = 2
         self.time_Update()
+        self.LcdDisplay(self.time_left)
         self.timer.stop()
         self.timer.start(1000)
         self.start_button.setEnabled(True)

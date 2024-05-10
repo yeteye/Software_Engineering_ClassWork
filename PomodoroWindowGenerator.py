@@ -1,7 +1,7 @@
 from asyncio import sleep, wait
 
 from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QFileDialog, QDialog, QDialogButtonBox, QLineEdit, \
-    QScrollArea, QVBoxLayout, QFrame
+    QScrollArea, QVBoxLayout, QFrame, QSizePolicy
 from PySide6.QtGui import QMouseEvent, Qt, QPixmap, QMovie
 import json
 
@@ -89,3 +89,4 @@ class PomodoroWindowGenerator(QWidget):
         line.setFixedHeight(1)  # 设置分隔线的高度
         self.taskLayout.addWidget(line)
         return
+

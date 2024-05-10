@@ -95,6 +95,7 @@ class Ui_AddTask(object):
         self.buttonBox.rejected.connect(AddTask.reject)
 
         self.buttonBox.accepted.connect(self.CreateTask)
+        self.buttonBox.accepted.connect(AddTask.accept)
 
         QMetaObject.connectSlotsByName(AddTask)
 
