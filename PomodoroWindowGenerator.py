@@ -79,7 +79,7 @@ class PomodoroWindowGenerator(QWidget):
         profileFile.write(json.dumps(profile, indent=4))
         profileFile.close()
 
-    def AddTaskToList(self,Task):
+    def AddTaskToList(self, Task):
         self.ui.TaskList.setWidget(Task)
 
         # 创建并添加一个分隔线

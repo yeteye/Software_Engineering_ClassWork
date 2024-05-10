@@ -28,4 +28,3 @@ class AddTaskWindow(QDialog, Ui_AddTask):
             # 将Task添加到TaskList中
             self.FatherWindow.AddTaskToList(task)
 
-
