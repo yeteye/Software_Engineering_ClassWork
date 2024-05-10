@@ -29,7 +29,7 @@ class Task(QWidget):
         self.nameLabel.adjustSize()
         self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)  # 宽度自适应
 
-        self.mousePressEvent = self.SendTime
+        self.mousePressEvent = self.SendTime    #点击添加的任务，传输任务时间
 
     def SendTime(self, mouseEvent: QMouseEvent):
         if mouseEvent.button() == Qt.LeftButton:
