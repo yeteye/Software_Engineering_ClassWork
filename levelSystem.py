@@ -16,6 +16,7 @@ class LevelSystem:
         data['level'] = 1
         data['exp'] = 0
         data['task_times'] = 0
+        data['plannedTime'] = 0
 
         with open(self.filename, 'w') as f:
             json.dump(data, f)
@@ -33,10 +34,11 @@ class LevelSystem:
 
     # task_time暂存每次每个任务的完成时间，完成后加入到经验值中，task_time清零
     def gain_experience(self):
-        self.data['exp'] += self.data['task_time']
-        self.data['task_time'] = 0
+        self.data['exp'] += self.data['plannedTime'] / 60   #plannedTime为完成任务规定时间，计算规则为每一分钟计入一经验
+        self.data['plannedTime'] = 0
+        self.data['task_times'] += 1
         self.save_data()
-        return self.data['exp']
+
 
     #计算升到下一级所需要的经验值
     def experience_to_next_level(self):
@@ -44,7 +46,7 @@ class LevelSystem:
         if current_level >= 100:
             return 0  # 已经满级
         else:
-            return current_level * 100
+            return current_level * 100  #升级机制为每一等级升级到下一等级的所需经验值为当前等级值*100
 
     def levelCalculate(self):
         while True:
