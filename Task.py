@@ -32,8 +32,11 @@ class Task(QWidget):
         self.mousePressEvent = self.SendTime
 
     def SendTime(self, mouseEvent: QMouseEvent):
-        if mouseEvent.button() == Qt.LeftButton:
-            print(14)
-            self.creatorWindow.FatherWindow.ui.clock.flag = 3
-            self.creatorWindow.FatherWindow.ui.clock.time_left = self.timeLast
-
+        if self.creatorWindow.FatherWindow.ui.clock.start_button.isEnabled():
+            if mouseEvent.button() == Qt.LeftButton:
+                self.creatorWindow.FatherWindow.ui.clock.timer.stop()
+                self.creatorWindow.FatherWindow.ui.clock.stop_button.setEnabled(False)
+                self.creatorWindow.FatherWindow.ui.clock.flag = 3
+                self.creatorWindow.FatherWindow.ui.clock.timeLast = self.timeLast
+                self.creatorWindow.FatherWindow.ui.clock.LcdDisplay(self.timeLast)
+        return

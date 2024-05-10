@@ -35,6 +35,7 @@ class PomodoroWindowGenerator(QWidget):
         self.taskScrollArea.setWidgetResizable(True)
         self.taskScrollArea.setWidget(self.taskWidget)
 
+
     ##更改头像
     def changeAvatar(self, mouseEvent: QMouseEvent):
         if mouseEvent.button() != Qt.LeftButton:
