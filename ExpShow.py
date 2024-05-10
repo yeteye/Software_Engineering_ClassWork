@@ -1,13 +1,15 @@
 from PySide6.QtCore import Qt
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import QSizePolicy, QLabel, QVBoxLayout, QWidget, QProgressBar
-from levelSystem import LevelSystem
+import json
 
+with open("profile.json", 'r') as file:
+    data = json.load(file)
 class Exp_Show(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.level = 1
-        self.exp = 3
+        self.level = data['level']
+        self.exp = data['exp']
         self.display_text = (f"<br><br>LV：{self.level}"
                              f"<br>EXP：{self.exp}")
 
@@ -27,8 +29,8 @@ class Exp_Show(QWidget):
         progress_bar = QProgressBar()
         # 设置进度条的范围和初始值
         progress_bar.setMinimum(0)
-        progress_bar.setMaximum(100)
-        progress_bar.setValue(50)  # 设置初始值为 50
+        progress_bar.setMaximum(int(self.level)*10)
+        progress_bar.setValue(int(self.exp))  # 设置初始值
         #进度条外观设置
         progress_bar.setStyleSheet(
             "QProgressBar {"
@@ -57,12 +59,14 @@ class Exp_Show(QWidget):
         )
         layout.addItem(verticalSpacer)
 
-    def update_display(self):
-        self.level = 2
-        self.exp = 4
+    def update_labels(self):
+        # 获取等级和经验值
+        self.level = data['level']
+        self.exp = data['exp']
 
-        self.Display(self.level , self.exp)
-    def Display(self):
-        self.display_text = f" {self.level},  {self.exp}"
-        self.lcd.display(self.display_text)
+        # 更新 QLabel 显示的文本
+        self.display_text = (f"<br><br>LV：{self.level}"
+                             f"<br>EXP：{self.exp}")
+
+
 
