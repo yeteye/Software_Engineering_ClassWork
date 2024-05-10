@@ -7,9 +7,12 @@ class CountdownWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.flag = 1
-        self.time_left = self.time_Update()
+        self.timeLast = 0
+        self.time_left = 1500
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_display)
+        self.display_text = "25:00"
+
 
         layout = QVBoxLayout(self)
 
@@ -18,7 +21,7 @@ class CountdownWidget(QWidget):
             QSizePolicy.Expanding, QSizePolicy.Expanding
         )  # 设置 LCD 数字显示的大小策略为尽可能扩展
         self.lcd.setDigitCount(5)  # 设置显示位数
-        self.lcd.display("00:00")  # 初始显示值为00:00
+        self.lcd.display(self.display_text)  # 初始显示值为00:00
         layout.addWidget(self.lcd)
 
         #设置间距
@@ -65,14 +68,23 @@ class CountdownWidget(QWidget):
             self.start_button.setEnabled(True)
             self.stop_button.setEnabled(False)
             self.time_left = 0
+            self.flag = 1
 
-        minutes = self.time_left // 60
-        seconds = self.time_left % 60
-        display_text = f"{minutes:02d}:{seconds:02d}"
-        self.lcd.display(display_text)
+
+        self.LcdDisplay(self.time_left)
+
+    def LcdDisplay(self, Time):
+        minutes = Time // 60
+        seconds = Time % 60
+        self.display_text = f"{minutes:02d}:{seconds:02d}"
+        self.lcd.display(self.display_text)
 
     def time_Update(self):
         if self.flag == 1:
-            self.time_left = 1500
+            self.timeLast = 1500
+            self.time_left = self.timeLast
         elif self.flag == 2:
-            self.time_left = 300
+            self.timeLast = 300
+            self.time_left = self.timeLast
+        else:
+            self.time_left = self.timeLast

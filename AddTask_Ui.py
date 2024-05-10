@@ -102,8 +102,8 @@ class Ui_AddTask(object):
 
     def retranslateUi(self, AddTask):
         AddTask.setWindowTitle(QCoreApplication.translate("AddTask", u"Let's make a new task", None))
-        self.label.setText(QCoreApplication.translate("AddTask", u"New Task Name", None))
-        self.label_2.setText(QCoreApplication.translate("AddTask", u"The Lasting Time", None))
+        self.label.setText(QCoreApplication.translate("AddTask", u"Task Name (Not NULL)", None))
+        self.label_2.setText(QCoreApplication.translate("AddTask", u"Time  (Must >= 5mins)", None))
         self.timeEdit.setDisplayFormat(QCoreApplication.translate("AddTask", u"mm:ss", None))
 
     # retranslateUi
