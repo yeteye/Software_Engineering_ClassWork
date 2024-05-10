@@ -1,5 +1,7 @@
 from PySide6 import QtGui, QtWidgets
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber, QSizePolicy
+from PySide6 import QtCore
+from PySide6.QtGui import QFont
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber, QSizePolicy, QLabel
 from PySide6.QtCore import QTimer
 import json
 from levelSystem import LevelSystem
@@ -9,6 +11,7 @@ class CountdownWidget(QWidget):
         super().__init__(parent)
         self.flag = 1
         self.timeLast = 0
+        self.task_times = 0
         self.time_left = 1500
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_display)
@@ -16,6 +19,7 @@ class CountdownWidget(QWidget):
 
 
         layout = QVBoxLayout(self)
+        layout.setSpacing(20)
 
         self.lcd = QLCDNumber()
         self.lcd.setSizePolicy(
@@ -25,26 +29,42 @@ class CountdownWidget(QWidget):
         self.lcd.display(self.display_text)  # 初始显示值为00:00
         layout.addWidget(self.lcd)
 
-        #设置间距
-        verticalSpacer = QtWidgets.QSpacerItem(
-            10, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding
-        )
-        layout.addItem(verticalSpacer)
 
+        # # 设置间距
+        # verticalSpacer = QtWidgets.QSpacerItem(
+        #     100, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding
+        # )
+        # layout.addItem(verticalSpacer)
+
+        font = QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setFamily("Arial")
+
+
+        self.explain = QLabel(self)
+        self.explain.setFont(font)
+        self.explain.setObjectName(u"explain")
+        self.explain.setText("直接按下'开始'默认专注"+str(25)+"mins\n"+"\n"+
+                             "按下'休息'固定休息"+str(5)+"mins\n"+"\n"+
+                             "可选择点击右侧任务\n以修改专注时间\n"+"\n"+
+                             "已专注次数:  "+str(self.task_times))
+        self.explain.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeft)
+        self.explain.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        layout.addWidget(self.explain, alignment=QtCore.Qt.AlignmentFlag.AlignTop)
 
         self.start_button = QPushButton("开始\n你的下一次专注吧！！！")
         self.start_button.clicked.connect(
             self.start_countdown
         )  # 点击时，调用start_countdown
-        layout.addWidget(self.start_button)
+        layout.addWidget(self.start_button, alignment=QtCore.Qt.AlignmentFlag.AlignBottom)
 
         self.stop_button = QPushButton("工作累了\n休息一下吧")
         self.stop_button.setEnabled(False)
         self.stop_button.clicked.connect(
             self.stop_countdown
         )  # 点击时，调用stop_countdown
-        layout.addWidget(self.stop_button)
-
+        layout.addWidget(self.stop_button, alignment=QtCore.Qt.AlignmentFlag.AlignBottom)
     #
     def start_countdown(self):
         self.time_Update()

@@ -28,7 +28,7 @@ class Task(QWidget):
         # 设置自适应宽度
         self.nameLabel.adjustSize()
         self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)  # 宽度自适应
-
+        layout.setAlignment(Qt.AlignTop)
         self.mousePressEvent = self.SendTime    #点击添加的任务，传输任务时间
 
     def SendTime(self, mouseEvent: QMouseEvent):
