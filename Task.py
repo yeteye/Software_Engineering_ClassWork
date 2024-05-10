@@ -22,11 +22,6 @@ class Task(QWidget):
         self.nameLabel.setAlignment(Qt.AlignCenter)  # 设置标签的文本对齐方式为居中对齐
         layout.addWidget(self.nameLabel)
 
-        # 设置固定高度
-        self.setFixedHeight(30)  # 例如，设定为30像素
-
-        # 设置自适应宽度
-        self.nameLabel.adjustSize()
         self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)  # 宽度自适应
         layout.setAlignment(Qt.AlignTop)
         self.mousePressEvent = self.SendTime    #点击添加的任务，传输任务时间
@@ -39,4 +34,8 @@ class Task(QWidget):
                 self.creatorWindow.FatherWindow.ui.clock.flag = 3
                 self.creatorWindow.FatherWindow.ui.clock.timeLast = self.timeLast
                 self.creatorWindow.FatherWindow.ui.clock.LcdDisplay(self.timeLast)
+            else:
+                self.layout().removeWidget(self.nameLabel)
+                self.nameLabel.deleteLater()
+                self.deleteLater()
         return

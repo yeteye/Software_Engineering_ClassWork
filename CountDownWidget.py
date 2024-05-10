@@ -29,30 +29,25 @@ class CountdownWidget(QWidget):
         self.lcd.display(self.display_text)  # 初始显示值为00:00
         layout.addWidget(self.lcd)
 
-
-        # # 设置间距
-        # verticalSpacer = QtWidgets.QSpacerItem(
-        #     100, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding
-        # )
-        # layout.addItem(verticalSpacer)
-
+        # 设置Qlabel字体
         font = QFont()
         font.setPointSize(12)
         font.setBold(True)
         font.setFamily("Arial")
 
-
+        #添加中间的使用说明部分和任务完成次数显示
         self.explain = QLabel(self)
         self.explain.setFont(font)
         self.explain.setObjectName(u"explain")
         self.explain.setText("直接按下'开始'默认专注"+str(25)+"mins\n"+"\n"+
                              "按下'休息'固定休息"+str(5)+"mins\n"+"\n"+
-                             "可选择点击右侧任务\n以修改专注时间\n"+"\n"+
+                             "可选择点击右侧已创建任务\n以修改专注时间\n"+"\n"+
                              "已专注次数:  "+str(self.task_times))
         self.explain.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeft)
         self.explain.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         layout.addWidget(self.explain, alignment=QtCore.Qt.AlignmentFlag.AlignTop)
 
+        # 添加start和stop的button
         self.start_button = QPushButton("开始\n你的下一次专注吧！！！")
         self.start_button.clicked.connect(
             self.start_countdown
@@ -65,7 +60,8 @@ class CountdownWidget(QWidget):
             self.stop_countdown
         )  # 点击时，调用stop_countdown
         layout.addWidget(self.stop_button, alignment=QtCore.Qt.AlignmentFlag.AlignBottom)
-    #
+
+    # button功能实现
     def start_countdown(self):
         self.time_Update()
         self.LcdDisplay(self.time_left)
@@ -84,6 +80,7 @@ class CountdownWidget(QWidget):
         self.stop_button.setEnabled(False)
         self.flag = 1
 
+    # lcd倒计时
     def update_display(self):
         self.time_left -= 1
         if self.time_left <= 0:
@@ -108,13 +105,14 @@ class CountdownWidget(QWidget):
 
 
         self.LcdDisplay(self.time_left)
-
+    # lcd显示实现
     def LcdDisplay(self, Time):
         minutes = Time // 60
         seconds = Time % 60
         self.display_text = f"{minutes:02d}:{seconds:02d}"
         self.lcd.display(self.display_text)
 
+    # 获取专注/休息时间长度
     def time_Update(self):
         if self.flag == 1:
             self.timeLast = 1500

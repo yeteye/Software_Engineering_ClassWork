@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.TaskCreator)
 
         self.TaskPlace = QVBoxLayout()
-        self.TaskPlace.setSpacing(1)
+        self.TaskPlace.setSpacing(0)
         self.TaskPlace.setObjectName(u"TaskPlace")
         self.TaskList = QScrollArea(MainWindow)
         self.TaskList.setObjectName(u"TaskList")
@@ -69,6 +69,7 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
         self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 102, 219))
         self.scrollAreaWidgetContents_layout = QVBoxLayout(self.scrollAreaWidgetContents)
+        self.scrollAreaWidgetContents_layout.setSpacing(0)
         self.scrollAreaWidgetContents.setLayout(self.scrollAreaWidgetContents_layout)
         self.TaskList.setWidget(self.scrollAreaWidgetContents)
         self.TaskList.setWidgetResizable(True)
@@ -89,14 +90,7 @@ class Ui_MainWindow(object):
         self.clock = CountdownWidget(MainWindow)
         self.clock.setObjectName(u"clock")
 
-
-        # self.explain = QLabel(MainWindow)
-        # self.explain.setObjectName(u"explain")
-
         self.verticalLayout_5.addWidget(self.clock)
-
-        # self.verticalLayout_5.addWidget(self.explain)
-        # self.verticalLayout.setStretch(0, 4)
 
         self.ClockPlace.addLayout(self.verticalLayout_5)
 
