@@ -1,7 +1,6 @@
 from PySide6.QtWidgets import QDialog
-from AddTask import Ui_AddTask
+from AddTask_Ui import Ui_AddTask
 import json
-
 
 class TaskGenerator(QDialog):
     def __init__(self):

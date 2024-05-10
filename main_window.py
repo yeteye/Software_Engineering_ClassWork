@@ -15,11 +15,12 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QListWidget,
-    QListWidgetItem, QPushButton, QSizePolicy, QVBoxLayout,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QPushButton,
+    QScrollArea, QSizePolicy, QVBoxLayout, QWidget)
 
 from CountDownWidget import CountdownWidget
+from PetShow import GIFWindow
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -29,8 +30,8 @@ class Ui_MainWindow(object):
         icon = QIcon()
         icon.addFile(u"image/f3006b49c9f1fc1519d2bf688fc52e70.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet(u"#MainWindow{background-color: rgb(255, 82, 99)}\n"
-"")
+        MainWindow.setStyleSheet(u"#MainWindow{background-color: rgb(255, 82, 99)}\n""")
+
         self.horizontalLayout = QHBoxLayout(MainWindow)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.verticalLayout = QVBoxLayout()
@@ -53,16 +54,21 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addLayout(self.User_Profile)
 
-        self.TaskPlace = QVBoxLayout()
-        self.TaskPlace.setSpacing(1)
-        self.TaskPlace.setObjectName(u"TaskPlace")
         self.TaskCreator = QPushButton(MainWindow)
         self.TaskCreator.setObjectName(u"TaskCreator")
 
-        self.TaskPlace.addWidget(self.TaskCreator)
+        self.verticalLayout.addWidget(self.TaskCreator)
 
-        self.TaskList = QListWidget(MainWindow)
+        self.TaskPlace = QVBoxLayout()
+        self.TaskPlace.setSpacing(1)
+        self.TaskPlace.setObjectName(u"TaskPlace")
+        self.TaskList = QScrollArea(MainWindow)
         self.TaskList.setObjectName(u"TaskList")
+        self.TaskList.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 102, 219))
+        self.TaskList.setWidget(self.scrollAreaWidgetContents)
 
         self.TaskPlace.addWidget(self.TaskList)
 
@@ -70,7 +76,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.addLayout(self.TaskPlace)
 
         self.verticalLayout.setStretch(0, 3)
-        self.verticalLayout.setStretch(1, 5)
+        self.verticalLayout.setStretch(2, 5)
 
         self.horizontalLayout.addLayout(self.verticalLayout)
 
@@ -93,6 +99,16 @@ class Ui_MainWindow(object):
         self.pet = QVBoxLayout()
         self.pet.setSpacing(6)
         self.pet.setObjectName(u"pet")
+        self.pet.setObjectName(u"pet")
+        self.verticalLayout_4 = QVBoxLayout()
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.Show = GIFWindow(MainWindow)
+        self.Show.setObjectName(u"Show")
+        self.verticalLayout_4.addWidget(self.Show)
+
+        self.pet.addLayout(self.verticalLayout_4)
+        self.pet.setStretch(2, 0)
+
 
         self.horizontalLayout.addLayout(self.pet)
 
