@@ -19,6 +19,8 @@ from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QPushButton,
     QScrollArea, QSizePolicy, QVBoxLayout, QWidget)
 
 from CountDownWidget import CountdownWidget
+from PetShow import GIFWindow
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -97,6 +99,16 @@ class Ui_MainWindow(object):
         self.pet = QVBoxLayout()
         self.pet.setSpacing(6)
         self.pet.setObjectName(u"pet")
+        self.pet.setObjectName(u"pet")
+        self.verticalLayout_4 = QVBoxLayout()
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.Show = GIFWindow(MainWindow)
+        self.Show.setObjectName(u"Show")
+        self.verticalLayout_4.addWidget(self.Show)
+
+        self.pet.addLayout(self.verticalLayout_4)
+        self.pet.setStretch(2, 0)
+
 
         self.horizontalLayout.addLayout(self.pet)
 
