@@ -27,7 +27,7 @@ class Task(QWidget):
 
         self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)  # 宽度自适应
         layout.setAlignment(Qt.AlignTop)
-        self.mousePressEvent = self.SendTime    #点击添加的任务，传输任务时间
+        self.mousePressEvent = self.SendTime  # 点击添加的任务，传输任务时间
 
     def SendTime(self, mouseEvent: QMouseEvent):
         if self.creatorWindow.FatherWindow.ui.clock.start_button.isEnabled():
@@ -52,7 +52,6 @@ class Task(QWidget):
             self.deleteLater()
         if action == EditTask:
             return
-
 
     def loadTask(self):
         try:
