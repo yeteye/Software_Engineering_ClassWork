@@ -39,11 +39,7 @@ class CountdownWidget(QWidget):
         self.explain = QLabel(self)
         self.explain.setFont(font)
         self.explain.setObjectName(u"explain")
-        self.explain.setText("直接按下'开始'默认专注"+str(25)+"mins\n"+"\n"+
-                             "按下'休息'固定休息"+str(5)+"mins\n"+"\n"+
-                             "可选择点击右侧已创建任务\n以修改专注时间\n"+"\n"+
-                             "已专注次数:  "+str(self.task_times))
-        self.explain.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeft)
+        self.setTimes()
         self.explain.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         layout.addWidget(self.explain, alignment=QtCore.Qt.AlignmentFlag.AlignTop)
 
@@ -89,15 +85,18 @@ class CountdownWidget(QWidget):
             self.stop_button.setEnabled(False)
             self.time_left = 0
             self.flag = 1
+            self.task_times += 1
+            self.setTimes()
             try:
                 with open("profile.json", 'r') as f:
                     data = json.load(f)
                     data['plannedTime'] = self.timeLast
+                    data['task_times'] = self.task_times
             except FileNotFoundError:
                 data = {
                     'level': 1,
                     'exp': 0,
-                    'task_times': 0,
+                    'task_times': self.task_times,
                     'plannedTime': self.timeLast
                 }
             with open("profile.json", 'w') as f:
@@ -122,3 +121,9 @@ class CountdownWidget(QWidget):
             self.time_left = self.timeLast
         else:
             self.time_left = self.timeLast
+
+    def setTimes(self):
+        self.explain.setText("直接按下'开始'默认专注" + str(25) + "mins\n" + "\n" +
+                             "按下'休息'固定休息" + str(5) + "mins\n" + "\n" +
+                             "可选择点击右侧已创建任务\n以修改专注时间\n" + "\n" +
+                             "已专注次数:  " + str(self.task_times))
