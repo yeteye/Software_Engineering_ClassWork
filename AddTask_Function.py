@@ -23,7 +23,7 @@ class AddTaskWindow(QDialog, Ui_AddTask):
             task_time = self.timeEdit.time().minute() * 60 + self.timeEdit.time().second()
 
             # 创建Task对象并设置属性
-            task = Task(task_name, task_time, self)
+            task = Task(task_name, task_time)
             task.addTask(task_name, task_time)
             # 将Task添加到TaskList中
             self.FatherWindow.AddTaskToList(task)

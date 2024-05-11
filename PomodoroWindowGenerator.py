@@ -8,7 +8,8 @@ import json
 from AddTask_Function import Ui_AddTask, AddTaskWindow
 from TaskGenerator import TaskGenerator
 from main_window import Ui_MainWindow
-
+from AddTask_Function import AddTaskWindow
+from Task import Task
 
 class PomodoroWindowGenerator(QWidget):
 
@@ -53,6 +54,19 @@ class PomodoroWindowGenerator(QWidget):
         profileFile = open("profile.json")
         profile = json.load(profileFile)
         profileFile.close()
+        try:
+            tasklistFile = open("tasklist.json")
+        except FileNotFoundError:
+            tasklistFile = open("tasklist.json", "w")
+        try:
+            tasklist = json.load(tasklistFile)
+        except ValueError:
+            tasklist = {}
+        for key in tasklist:
+            task = Task(key, tasklist[key], )
+            self.AddTaskToList(task)
+        tasklistFile.close()
+
         return profile
 
     def updateProfile(self, item, value):
