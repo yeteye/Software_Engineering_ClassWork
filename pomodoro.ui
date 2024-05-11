@@ -70,9 +70,9 @@
         <number>1</number>
        </property>
        <item>
-        <widget class="QListWidget" name="listWidget">
-         <property name="resizeMode">
-          <enum>QListView::ResizeMode::Adjust</enum>
+        <widget class="QGroupBox" name="TASKLIST">
+         <property name="title">
+          <string>TASKLIST</string>
          </property>
         </widget>
        </item>

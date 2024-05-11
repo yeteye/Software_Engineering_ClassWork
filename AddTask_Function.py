@@ -16,7 +16,7 @@ class AddTaskWindow(QDialog, Ui_AddTask):
 
 
     def CreateTask(self):
-        if self.lineEdit.text() == "" or self.timeEdit.time().minute() * 60 + self.timeEdit.time().second() < 10:# 方便试验设为10seconds
+        if self.lineEdit.text() == "" or self.timeEdit.time().minute() * 60 + self.timeEdit.time().second() < 300:# 方便试验设为10seconds
             return
         else:
             task_name = self.lineEdit.text()
@@ -24,7 +24,10 @@ class AddTaskWindow(QDialog, Ui_AddTask):
 
             # 创建Task对象并设置属性
             task = Task(task_name, task_time)
-            task.addTask(task_name, task_time)
+            task.addTaskToProfile(task_name, task_time)
+            task.LinkMainWindow(self.FatherWindow)
             # 将Task添加到TaskList中
+            Stretch = self.FatherWindow.ui.TaskListContainer.takeAt(self.FatherWindow.ui.TaskListContainer.count()-1)
+            self.FatherWindow.ui.TaskListContainer.removeItem(Stretch)
             self.FatherWindow.AddTaskToList(task)
-
+            self.FatherWindow.ui.TaskListContainer.insertStretch(-1, 1)

@@ -16,10 +16,13 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QListView,
-    QListWidget, QListWidgetItem, QPushButton, QSizePolicy,
-    QVBoxLayout, QWidget)
+                               QListWidget, QListWidgetItem, QPushButton, QSizePolicy,
+                               QVBoxLayout, QWidget, QGroupBox)
 
 from CountDownWidget import CountdownWidget
+from ExpShow import Exp_Show
+from PetShow import GIFWindow
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -61,11 +64,14 @@ class Ui_MainWindow(object):
         self.TaskPlace = QVBoxLayout()
         self.TaskPlace.setSpacing(1)
         self.TaskPlace.setObjectName(u"TaskPlace")
-        self.listWidget = QListWidget(MainWindow)
-        self.listWidget.setObjectName(u"listWidget")
-        self.listWidget.setResizeMode(QListView.ResizeMode.Adjust)
-
-        self.TaskPlace.addWidget(self.listWidget)
+        self.TaskList = QGroupBox(MainWindow)
+        self.TaskList.setObjectName(u"TASKLIST")
+        self.TaskListContainer = QVBoxLayout()
+        self.TaskListContainer.setSpacing(1)
+        self.TaskListContainer.setObjectName(u"TaskListContainer")
+        self.TaskListContainer.setSpacing(1)
+        self.TaskList.setLayout(self.TaskListContainer)
+        self.TaskPlace.addWidget(self.TaskList)
 
 
         self.verticalLayout.addLayout(self.TaskPlace)
@@ -94,6 +100,24 @@ class Ui_MainWindow(object):
         self.pet = QVBoxLayout()
         self.pet.setSpacing(6)
         self.pet.setObjectName(u"pet")
+        self.pet.setObjectName(u"pet")
+        self.verticalLayout_4 = QVBoxLayout()
+        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.petShow = GIFWindow(MainWindow)
+        self.petShow.setObjectName(u"Show")
+        self.verticalLayout_4.addWidget(self.petShow)
+
+        self.pet.addLayout(self.verticalLayout_4)
+        self.pet.setStretch(2, 0)
+
+        self.verticalLayout_3 = QVBoxLayout()
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.expShow = Exp_Show(MainWindow)
+        self.expShow.setObjectName(u"Show")
+        self.verticalLayout_3.addWidget(self.expShow)
+
+        self.pet.addLayout(self.verticalLayout_3)
+        self.pet.setStretch(2, 0)
 
         self.horizontalLayout.addLayout(self.pet)
 
@@ -111,5 +135,6 @@ class Ui_MainWindow(object):
         self.community.setText(QCoreApplication.translate("MainWindow", u"\u793e\u533a", None))
         self.avatar.setText("")
         self.TaskCreator.setText(QCoreApplication.translate("MainWindow", u"+", None))
+        self.TaskList.setTitle(QCoreApplication.translate("MainWindow", u"TASKLIST", None))
     # retranslateUi
 

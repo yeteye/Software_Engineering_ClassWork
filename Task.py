@@ -6,13 +6,15 @@ from PySide6.QtGui import QMouseEvent
 
 
 class Task(QWidget):
-    def __init__(self, name, timeLast,  parent=None):
+    def __init__(self, name, timeLast, parent=None):
         super().__init__(parent)
         # 保存任务名和持续时间
         self.name = name
         self.timeLast = timeLast
         self.tasklist = self.loadTask()
         self.setStyleSheet("border: 1px solid black;")
+        self.MainWindow = None
+
 
         # 创建水平布局
         layout = QHBoxLayout(self)
@@ -29,13 +31,13 @@ class Task(QWidget):
         self.mousePressEvent = self.SendTime  # 点击添加的任务，传输任务时间
 
     def SendTime(self, mouseEvent: QMouseEvent):
-        if self.creatorWindow.FatherWindow.ui.clock.start_button.isEnabled():
+        if self.MainWindow.ui.clock.start_button.isEnabled():
             if mouseEvent.button() == Qt.LeftButton:
-                self.creatorWindow.FatherWindow.ui.clock.timer.stop()
-                self.creatorWindow.FatherWindow.ui.clock.stop_button.setEnabled(False)
-                self.creatorWindow.FatherWindow.ui.clock.flag = 3
-                self.creatorWindow.FatherWindow.ui.clock.timeLast = self.timeLast
-                self.creatorWindow.FatherWindow.ui.clock.LcdDisplay(self.timeLast)
+                self.MainWindow.ui.clock.timer.stop()
+                self.MainWindow.ui.clock.stop_button.setEnabled(False)
+                self.MainWindow.ui.clock.flag = 3
+                self.MainWindow.ui.clock.timeLast = self.timeLast
+                self.MainWindow.ui.clock.LcdDisplay(self.timeLast)
         return
 
     def contextMenuEvent(self, event: QMouseEvent):
@@ -45,7 +47,7 @@ class Task(QWidget):
         EditTask = menu.addAction("Edit")
         action = menu.exec_(self.mapToGlobal(event.pos()))
         if action == DeleteTask:
-            self.deleteTask(self.name)
+            self.deleteTaskFromProfile(self.name)
             self.layout().removeWidget(self.nameLabel)
             self.nameLabel.deleteLater()
             self.deleteLater()
@@ -64,14 +66,17 @@ class Task(QWidget):
         tasklistFile.close()
         return tasklist
 
-    def addTask(self, name, time):
+    def addTaskToProfile(self, name, time):
         self.tasklist.update({name: time})
         tasklistFile = open("tasklist.json", "w")
         tasklistFile.write(json.dumps(self.tasklist, indent=4))
         tasklistFile.close()
 
-    def deleteTask(self, name):
+    def deleteTaskFromProfile(self, name):
         self.tasklist.pop(name)
         tasklistFile = open("tasklist.json", "w")
         tasklistFile.write(json.dumps(self.tasklist, indent=4))
         tasklistFile.close()
+
+    def LinkMainWindow(self,MainWindow):
+        self.MainWindow = MainWindow

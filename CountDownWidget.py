@@ -124,6 +124,7 @@ class CountdownWidget(QWidget):
 
     def setTimes(self):
         self.explain.setText("直接按下'开始'默认专注" + str(25) + "mins\n" + "\n" +
-                             "按下'休息'固定休息" + str(5) + "mins\n" + "\n" +
+                             "按下'休息'固定休息" + str(5) + "mins\n" +
                              "可选择点击右侧已创建任务\n以修改专注时间\n" + "\n" +
+                             "(最多只能创建"+str(10)+"个任务)"+"\n"
                              "已专注次数:  " + str(self.task_times))
