@@ -1,13 +1,14 @@
 import json
 
-from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel, QVBoxLayout, QSizePolicy, QMenu, QListWidget
+from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel, QVBoxLayout, QSizePolicy, QMenu
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QMouseEvent
 
 
 class Task(QWidget):
-    def __init__(self, name, timeLast,  parent=None):
+    def __init__(self, name, timeLast, AddTaskWindow, parent=None):
         super().__init__(parent)
+        self.creatorWindow = AddTaskWindow
         # 保存任务名和持续时间
         self.name = name
         self.timeLast = timeLast
@@ -26,16 +27,16 @@ class Task(QWidget):
 
         self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)  # 宽度自适应
         layout.setAlignment(Qt.AlignTop)
-        self.mousePressEvent = self.SendTime    #点击添加的任务，传输任务时间
+        self.mousePressEvent = self.SendTime  # 点击添加的任务，传输任务时间
 
     def SendTime(self, mouseEvent: QMouseEvent):
-        if self.MainWindow.ui.clock.start_button.isEnabled():
+        if self.creatorWindow.FatherWindow.ui.clock.start_button.isEnabled():
             if mouseEvent.button() == Qt.LeftButton:
-                self.MainWindow.ui.clock.timer.stop()
-                self.MainWindow.ui.clock.stop_button.setEnabled(False)
-                self.MainWindow.ui.clock.flag = 3
-                self.MainWindow.ui.clock.timeLast = self.timeLast
-                self.MainWindow.ui.clock.LcdDisplay(self.timeLast)
+                self.creatorWindow.FatherWindow.ui.clock.timer.stop()
+                self.creatorWindow.FatherWindow.ui.clock.stop_button.setEnabled(False)
+                self.creatorWindow.FatherWindow.ui.clock.flag = 3
+                self.creatorWindow.FatherWindow.ui.clock.timeLast = self.timeLast
+                self.creatorWindow.FatherWindow.ui.clock.LcdDisplay(self.timeLast)
         return
 
     def contextMenuEvent(self, event: QMouseEvent):
@@ -51,7 +52,6 @@ class Task(QWidget):
             self.deleteLater()
         if action == EditTask:
             return
-
 
     def loadTask(self):
         try:
@@ -76,6 +76,3 @@ class Task(QWidget):
         tasklistFile = open("tasklist.json", "w")
         tasklistFile.write(json.dumps(self.tasklist, indent=4))
         tasklistFile.close()
-
-    def LinkCreatorWindow(self,MainWindow):
-        self.MainWindow = MainWindow

@@ -63,8 +63,7 @@ class PomodoroWindowGenerator(QWidget):
         except ValueError:
             tasklist = {}
         for key in tasklist:
-            task = Task(key, tasklist[key])
-            task.LinkCreatorWindow(self)
+            task = Task(key, tasklist[key], None)
             self.AddTaskToList(task)
         tasklistFile.close()
 
@@ -78,6 +77,6 @@ class PomodoroWindowGenerator(QWidget):
         profileFile.close()
 
     def AddTaskToList(self, Task):
-        self.ui.scrollAreaWidgetContents_layout.addWidget(Task, alignment=Qt.AlignmentFlag.AlignTop)
+        self.ui.listWidget.addItem(Task.name)
         return
 

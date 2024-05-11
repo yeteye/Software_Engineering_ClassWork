@@ -70,20 +70,10 @@
         <number>1</number>
        </property>
        <item>
-        <widget class="QScrollArea" name="TaskList">
-         <property name="widgetResizable">
-          <bool>true</bool>
+        <widget class="QListWidget" name="listWidget">
+         <property name="resizeMode">
+          <enum>QListView::ResizeMode::Adjust</enum>
          </property>
-         <widget class="QWidget" name="scrollAreaWidgetContents">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>102</width>
-            <height>219</height>
-           </rect>
-          </property>
-         </widget>
         </widget>
        </item>
       </layout>
