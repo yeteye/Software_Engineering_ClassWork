@@ -63,7 +63,8 @@ class PomodoroWindowGenerator(QWidget):
         except ValueError:
             tasklist = {}
         for key in tasklist:
-            task = Task(key, tasklist[key], )
+            task = Task(key, tasklist[key])
+            task.LinkCreatorWindow(self)
             self.AddTaskToList(task)
         tasklistFile.close()
 

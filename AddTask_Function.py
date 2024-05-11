@@ -25,6 +25,7 @@ class AddTaskWindow(QDialog, Ui_AddTask):
             # 创建Task对象并设置属性
             task = Task(task_name, task_time)
             task.addTask(task_name, task_time)
+            task.LinkCreatorWindow(self.FatherWindow)
             # 将Task添加到TaskList中
             self.FatherWindow.AddTaskToList(task)
 
