@@ -1,3 +1,5 @@
+import json
+
 from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel, QVBoxLayout, QSizePolicy, QMenu
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QMouseEvent
@@ -10,6 +12,7 @@ class Task(QWidget):
         # 保存任务名和持续时间
         self.name = name
         self.timeLast = timeLast
+        self.tasklist = self.loadTask()
         self.setStyleSheet("border: 1px solid black;")
 
         # 创建水平布局
@@ -43,9 +46,34 @@ class Task(QWidget):
         EditTask = menu.addAction("Edit")
         action = menu.exec_(self.mapToGlobal(event.pos()))
         if action == DeleteTask:
+            self.deleteTask(self.name)
             self.layout().removeWidget(self.nameLabel)
             self.nameLabel.deleteLater()
             self.deleteLater()
         if action == EditTask:
             return
 
+
+    def loadTask(self):
+        try:
+            tasklistFile = open("tasklist.json")
+        except FileNotFoundError:
+            tasklistFile = open("tasklist.json", "w")
+        try:
+            tasklist = json.load(tasklistFile)
+        except ValueError:
+            tasklist = {}
+        tasklistFile.close()
+        return tasklist
+
+    def addTask(self, name, time):
+        self.tasklist.update({name: time})
+        tasklistFile = open("tasklist.json", "w")
+        tasklistFile.write(json.dumps(self.tasklist, indent=4))
+        tasklistFile.close()
+
+    def deleteTask(self, name):
+        self.tasklist.pop(name)
+        tasklistFile = open("tasklist.json", "w")
+        tasklistFile.write(json.dumps(self.tasklist, indent=4))
+        tasklistFile.close()
