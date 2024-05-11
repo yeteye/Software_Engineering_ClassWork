@@ -16,7 +16,7 @@ class AddTaskWindow(QDialog, Ui_AddTask):
 
 
     def CreateTask(self):
-        if self.lineEdit.text() == "" or self.timeEdit.time().minute() * 60 + self.timeEdit.time().second() < 300:
+        if self.lineEdit.text() == "" or self.timeEdit.time().minute() * 60 + self.timeEdit.time().second() < 10:# 方便试验设为10seconds
             return
         else:
             task_name = self.lineEdit.text()

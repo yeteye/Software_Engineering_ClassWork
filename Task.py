@@ -1,6 +1,6 @@
 import json
 
-from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel, QVBoxLayout, QSizePolicy, QMenu
+from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel, QVBoxLayout, QSizePolicy, QMenu, QListWidget
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QMouseEvent
 
