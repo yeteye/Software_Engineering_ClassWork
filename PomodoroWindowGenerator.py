@@ -63,7 +63,7 @@ class PomodoroWindowGenerator(QWidget):
         except ValueError:
             tasklist = {}
         for key in tasklist:
-            task = Task(key, tasklist[key], None)
+            task = Task(key, tasklist[key])
             self.AddTaskToList(task)
         tasklistFile.close()
 
@@ -76,7 +76,8 @@ class PomodoroWindowGenerator(QWidget):
         profileFile.write(json.dumps(profile, indent=4))
         profileFile.close()
 
-    def AddTaskToList(self, Task):
-        self.ui.listWidget.addItem(Task.name)
+    def AddTaskToList(self, task):
+        self.ui.listWidget.addItem(task.name)
+        self.ui.listWidget.repaint()
         return
 

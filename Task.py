@@ -6,9 +6,8 @@ from PySide6.QtGui import QMouseEvent
 
 
 class Task(QWidget):
-    def __init__(self, name, timeLast, AddTaskWindow, parent=None):
+    def __init__(self, name, timeLast,  parent=None):
         super().__init__(parent)
-        self.creatorWindow = AddTaskWindow
         # 保存任务名和持续时间
         self.name = name
         self.timeLast = timeLast
