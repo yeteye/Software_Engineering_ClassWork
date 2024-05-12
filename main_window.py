@@ -15,14 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QHBoxLayout, QLabel, QListView,
-                               QListWidget, QListWidgetItem, QPushButton, QSizePolicy,
-                               QVBoxLayout, QWidget, QGroupBox)
+from PySide6.QtWidgets import (QApplication, QGroupBox, QHBoxLayout, QLabel,
+    QPushButton, QSizePolicy, QVBoxLayout, QWidget)
 
 from CountDownWidget import CountdownWidget
-from ExpShow import Exp_Show
-from PetShow import GIFWindow
-
+from PetExpWidget import PetExpWidget
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -100,24 +97,11 @@ class Ui_MainWindow(object):
         self.pet = QVBoxLayout()
         self.pet.setSpacing(6)
         self.pet.setObjectName(u"pet")
-        self.pet.setObjectName(u"pet")
-        self.verticalLayout_4 = QVBoxLayout()
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.petShow = GIFWindow(MainWindow)
-        self.petShow.setObjectName(u"Show")
-        self.verticalLayout_4.addWidget(self.petShow)
+        self.widget = PetExpWidget(MainWindow)
+        self.widget.setObjectName(u"widget")
 
-        self.pet.addLayout(self.verticalLayout_4)
-        self.pet.setStretch(2, 0)
+        self.pet.addWidget(self.widget)
 
-        self.verticalLayout_3 = QVBoxLayout()
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.expShow = Exp_Show(MainWindow)
-        self.expShow.setObjectName(u"Show")
-        self.verticalLayout_3.addWidget(self.expShow)
-
-        self.pet.addLayout(self.verticalLayout_3)
-        self.pet.setStretch(2, 0)
 
         self.horizontalLayout.addLayout(self.pet)
 
@@ -136,5 +120,6 @@ class Ui_MainWindow(object):
         self.avatar.setText("")
         self.TaskCreator.setText(QCoreApplication.translate("MainWindow", u"+", None))
         self.TaskList.setTitle(QCoreApplication.translate("MainWindow", u"TASKLIST", None))
+
     # retranslateUi
 

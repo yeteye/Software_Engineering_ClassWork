@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bfc0a601-fabb-477f-8855-9de13ba102f2" name="更改" comment="update_list_widget">
+      <change afterPath="$PROJECT_DIR$/PetExpWidget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PomodoroWindowGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/PomodoroWindowGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasklist.json" beforeDir="false" afterPath="$PROJECT_DIR$/tasklist.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_window.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pomodoro.ui" beforeDir="false" afterPath="$PROJECT_DIR$/pomodoro.ui" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,12 +52,14 @@
     &quot;assignee&quot;: &quot;Zeiwoos&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;git@github.com:yeteye/Software_Engineering_ClassWork.git&quot;,
-    &quot;accountId&quot;: &quot;87d22575-a7ee-4c37-9b4f-c46e747c3727&quot;
-  }
-}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="c539c0d5-624a-4ee8-a781-2b1a1d54b489" />
+        <option name="url" value="https://github.com/yeteye/Software_Engineering_ClassWork.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -154,7 +158,9 @@
       <workItem from="1715342487588" duration="4450000" />
       <workItem from="1715348065747" duration="3356000" />
       <workItem from="1715355431256" duration="2055000" />
-      <workItem from="1715390449409" duration="8877000" />
+      <workItem from="1715390449409" duration="9033000" />
+      <workItem from="1715505874325" duration="217000" />
+      <workItem from="1715507210911" duration="475000" />
     </task>
     <task id="LOCAL-00001" summary="尝试实现添加Task">
       <option name="closed" value="true" />
@@ -308,7 +314,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715396106937</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="update_list_widget">
+      <option name="closed" value="true" />
+      <created>1715399397944</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1715399397944</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -358,12 +372,22 @@
     <MESSAGE value="update_list_widget" />
     <option name="LAST_COMMIT_MESSAGE" value="update_list_widget" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/CountDownWidget.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Software$PomodoroWindowGenerator.coverage" NAME="main 覆盖结果" MODIFIED="1715006456099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Software$AddTask.coverage" NAME="AddTask 覆盖结果" MODIFIED="1714114603504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main 覆盖结果" MODIFIED="1715003560599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Software$test.coverage" NAME="Menu 覆盖结果" MODIFIED="1715345467039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Software_Engineering_ClassWork$main.coverage" NAME="main 覆盖结果" MODIFIED="1715399338724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/Software_Engineering_ClassWork$main.coverage" NAME="main 覆盖结果" MODIFIED="1715505926644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/Software$main.coverage" NAME="main 覆盖结果" MODIFIED="1715389237344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Software$countdownwidget.coverage" NAME="countdownwidget 覆盖结果" MODIFIED="1714118381684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Software$main_window.coverage" NAME="main_window 覆盖结果" MODIFIED="1714107115482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
