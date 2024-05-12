@@ -76,6 +76,7 @@ class Ui_AddTask(object):
 
         self.timeEdit = QTimeEdit(AddTask)
         self.timeEdit.setObjectName(u"timeEdit")
+        self.timeEdit.setMinimumTime(QTime(0, 5))
 
         self.horizontalLayout.addWidget(self.timeEdit)
 
