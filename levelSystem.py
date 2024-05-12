@@ -58,5 +58,3 @@ class LevelSystem:
                 self.data['level'] += 1
             else:
                 break
-
-

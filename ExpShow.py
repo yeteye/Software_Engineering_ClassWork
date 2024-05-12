@@ -31,7 +31,7 @@ class Exp_Show(QWidget):
         progress_bar.setMinimum(0)
         progress_bar.setMaximum(int(self.level)*100)
         progress_bar.setValue(int(self.exp))  # 设置初始值
-        progress_bar.setFormat(self.exp)
+        progress_bar.setFormat(f"{int(self.exp)/(int(self.level)*100):.2f}%")
 
         #进度条外观设置
         progress_bar.setStyleSheet(
@@ -69,6 +69,3 @@ class Exp_Show(QWidget):
         # 更新 QLabel 显示的文本
         self.display_text = (f"<br><br>LV：{self.level}"
                              f"<br>EXP：{self.exp}")
-
-
-

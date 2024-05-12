@@ -1,7 +1,7 @@
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QMovie
 from PySide6 import QtWidgets
-from PySide6.QtWidgets import QWidget, QLabel, QVBoxLayout ,QLCDNumber ,QSizePolicy
+from PySide6.QtWidgets import QWidget, QLabel, QVBoxLayout
 from PySide6.QtCore import QSize
 
 class GIFWindow(QWidget):
@@ -32,11 +32,3 @@ class GIFWindow(QWidget):
         )
         layout.addItem(verticalSpacer)
         #def mousePressEvent(self, event):
-
-
-
-
-
-
-
-

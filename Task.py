@@ -1,13 +1,12 @@
 import json
 
-from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel, QVBoxLayout, QSizePolicy, QMenu
+from PySide6.QtWidgets import QWidget, QHBoxLayout, QLabel, QSizePolicy, QMenu, QDialog
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QMouseEvent
 
-
 class Task(QWidget):
-    def __init__(self, name, timeLast, parent=None):
-        super().__init__(parent)
+    def __init__(self, name, timeLast):
+        super().__init__()
         # 保存任务名和持续时间
         self.name = name
         self.timeLast = timeLast
@@ -52,6 +51,8 @@ class Task(QWidget):
             self.nameLabel.deleteLater()
             self.deleteLater()
         if action == EditTask:
+            self.MainWindow.flag = 1
+            self.MainWindow.CreatorUiInit(self)
             return
 
     def loadTask(self):
@@ -78,5 +79,3 @@ class Task(QWidget):
         tasklistFile.write(json.dumps(self.tasklist, indent=4))
         tasklistFile.close()
 
-    def LinkMainWindow(self,MainWindow):
-        self.MainWindow = MainWindow
