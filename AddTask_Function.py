@@ -12,9 +12,12 @@ class AddTaskWindow(QDialog, Ui_AddTask):
         self.FatherWindow = PomodoroWindowGerner
 
     def CreateTask(self):
-        if self.lineEdit.text() == "" or self.timeEdit.time().minute() * 60 + self.timeEdit.time().second() < 300:# 方便试验设为10seconds
+        if self.lineEdit.text() == "":
             return
         else:
+            for taskname in self.FatherWindow.tasklist:
+                if taskname == self.lineEdit.text():
+                    return
             task_name = self.lineEdit.text()
             task_time = self.timeEdit.time().minute() * 60 + self.timeEdit.time().second()
             if self.FatherWindow.flag == 1:
