@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QFileDialog, Q
 from PySide6.QtGui import QMouseEvent, Qt, QPixmap, QPainter, QPainterPath
 import json
 
+from WebWindow import WebWindow
 from main_window import Ui_MainWindow
 from AddTask_Function import AddTaskWindow
 from Task import Task
@@ -25,6 +26,7 @@ class PomodoroWindowGenerator(QWidget):
         self.ui.avatar.setPixmap(self.CreateRoundedPixmap())
         self.ui.avatar.mousePressEvent = self.changeAvatar
         self.ui.TaskCreator.mousePressEvent = self.createTaskUI
+        self.ui.community.mousePressEvent = self.TurnToWeb
 
 
     def INITIALIZE(self):
@@ -113,3 +115,12 @@ class PomodoroWindowGenerator(QWidget):
             time = QTime(0, Task.timeLast // 60, Task.timeLast % 60)
             self.TaskCreator_ui.timeEdit.setTime(time)
         dialog.exec()
+
+    def TurnToWeb(self, mouseEvent: QMouseEvent):
+        if mouseEvent.button() != Qt.LeftButton:
+            return
+        import sys
+        self.WebWindow = WebWindow()
+        self.WebWindow.show()
+
+

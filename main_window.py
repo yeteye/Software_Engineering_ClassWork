@@ -34,6 +34,8 @@ class Ui_MainWindow(object):
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"#MainWindow{background-color: rgb(255, 82, 99)}\n"
 "")
+
+
         self.horizontalLayout = QHBoxLayout(MainWindow)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.verticalLayout = QVBoxLayout()
@@ -42,24 +44,21 @@ class Ui_MainWindow(object):
         self.User_Profile.setObjectName(u"User_Profile")
         self.community = QPushButton(MainWindow)
         self.community.setObjectName(u"community")
-
         self.User_Profile.addWidget(self.community)
 
         self.avatar = QLabel(MainWindow)
         self.avatar.setObjectName(u"avatar")
-        self.avatar.setMaximumSize(QSize(115, 115))
+        #self.avatar.setMaximumSize(QSize(115, 115))
         self.avatar.setScaledContents(True)
         self.avatar.setWordWrap(False)
-
         self.User_Profile.addWidget(self.avatar)
 
 
         self.verticalLayout.addLayout(self.User_Profile)
-
         self.TaskCreator = QPushButton(MainWindow)
         self.TaskCreator.setObjectName(u"TaskCreator")
-
         self.verticalLayout.addWidget(self.TaskCreator)
+
 
         self.TaskPlace = QVBoxLayout()
         self.TaskPlace.setSpacing(1)
@@ -72,14 +71,11 @@ class Ui_MainWindow(object):
         self.TaskListContainer.setSpacing(1)
         self.TaskList.setLayout(self.TaskListContainer)
         self.TaskPlace.addWidget(self.TaskList)
-
-
         self.verticalLayout.addLayout(self.TaskPlace)
-
         self.verticalLayout.setStretch(0, 3)
         self.verticalLayout.setStretch(2, 5)
-
         self.horizontalLayout.addLayout(self.verticalLayout)
+
 
         self.ClockPlace = QVBoxLayout()
         self.ClockPlace.setObjectName(u"ClockPlace")
@@ -87,14 +83,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.clock = CountdownWidget(MainWindow)
         self.clock.setObjectName(u"clock")
-
         self.verticalLayout_5.addWidget(self.clock)
-
-
         self.ClockPlace.addLayout(self.verticalLayout_5)
-
         self.ClockPlace.setStretch(0, 4)
-
         self.horizontalLayout.addLayout(self.ClockPlace)
 
         self.pet = QVBoxLayout()
@@ -106,27 +97,27 @@ class Ui_MainWindow(object):
         self.petShow = GIFWindow(MainWindow)
         self.petShow.setObjectName(u"Show")
         self.verticalLayout_4.addWidget(self.petShow)
-
         self.pet.addLayout(self.verticalLayout_4)
         self.pet.setStretch(2, 0)
+
 
         self.verticalLayout_3 = QVBoxLayout()
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.expShow = Exp_Show(MainWindow)
         self.expShow.setObjectName(u"Show")
         self.verticalLayout_3.addWidget(self.expShow)
-
         self.pet.addLayout(self.verticalLayout_3)
         self.pet.setStretch(2, 0)
-
         self.horizontalLayout.addLayout(self.pet)
+
 
         self.horizontalLayout.setStretch(0, 15)
         self.horizontalLayout.setStretch(1, 25)
         self.horizontalLayout.setStretch(2, 30)
 
-        self.retranslateUi(MainWindow)
 
+
+        self.retranslateUi(MainWindow)
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
 

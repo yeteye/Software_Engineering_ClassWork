@@ -9,7 +9,7 @@ class GIFWindow(QWidget):
         super().__init__(parent)
 
         # 创建QMovie对象并加载GIF文件
-        self.movie = QMovie("image\pet.gif")
+        self.movie = QMovie("image\pet2.gif")
         self.movie.setScaledSize(QSize(200, 200))
         # 创建一个QLabel来显示GIF
         self.gif_label = QLabel()
