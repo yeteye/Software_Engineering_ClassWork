@@ -96,6 +96,9 @@
      <property name="spacing">
       <number>6</number>
      </property>
+     <item>
+      <widget class="PetExpWidget" name="widget" native="true"/>
+     </item>
     </layout>
    </item>
   </layout>
@@ -105,6 +108,12 @@
    <class>CountdownWidget</class>
    <extends>QWidget</extends>
    <header>CountDownWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PetExpWidget</class>
+   <extends>QWidget</extends>
+   <header>PetExpWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
