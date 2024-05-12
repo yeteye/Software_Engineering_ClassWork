@@ -1,3 +1,4 @@
+from PySide6.QtCore import QPropertyAnimation, QRect
 from PySide6.QtWidgets import QDialogButtonBox
 from Task import Task
 from PySide6.QtWidgets import QDialog
@@ -9,8 +10,6 @@ class AddTaskWindow(QDialog, Ui_AddTask):
         self.setupUi(self)
         self.Task = None
         self.FatherWindow = PomodoroWindowGerner
-        Ok_Button = self.buttonBox.button(QDialogButtonBox.Ok)
-        Ok_Button.clicked.connect(self.CreateTask())
 
     def CreateTask(self):
         if self.lineEdit.text() == "" or self.timeEdit.time().minute() * 60 + self.timeEdit.time().second() < 300:# 方便试验设为10seconds
@@ -27,7 +26,7 @@ class AddTaskWindow(QDialog, Ui_AddTask):
                 self.FatherWindow.ui.flag = 0
             else:
                 # 创建Task对象并设置属性
-                self.Task = Task(task_name, task_time)
+                self.Task = Task(task_name, task_time, self.FatherWindow)
                 self.Task.addTaskToProfile(task_name, task_time)
                 self.Task.AddTaskUi = self
                 self.Task.MainWindow = self.FatherWindow
@@ -39,8 +38,12 @@ class AddTaskWindow(QDialog, Ui_AddTask):
                 self.FatherWindow.AddTaskToList(self.Task)
                 self.FatherWindow.ui.TaskListContainer.insertStretch(-1, 1)
 
-
-
-    def UiInitialize(self):
-        if self.FatherWindow.flag == 1:
-            return
+    def ShakeWindow(self):
+        # 定义动画效果，抖动窗口
+        animation = QPropertyAnimation(self, b"geometry")
+        animation.setDuration(70)
+        for i in range(0, 3, 2):
+            animation.setKeyValueAt(i / 10, QRect(self.x() - 5, self.y(), self.width(), self.height()))
+            animation.setKeyValueAt((i + 1) / 10, QRect(self.x() + 5, self.y(), self.width(), self.height()))
+        animation.setEndValue(QRect(self.x(), self.y(), self.width(), self.height()))
+        animation.start(QPropertyAnimation.DeleteWhenStopped)

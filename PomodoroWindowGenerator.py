@@ -1,4 +1,4 @@
-from PySide6.QtCore import QTime
+from PySide6.QtCore import QTime, QCoreApplication
 from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QFileDialog, QDialog, QDialogButtonBox, QLineEdit, \
     QScrollArea, QVBoxLayout, QFrame, QSizePolicy
 from PySide6.QtGui import QMouseEvent, Qt, QPixmap, QPainter, QPainterPath
@@ -78,7 +78,7 @@ class PomodoroWindowGenerator(QWidget):
         except ValueError:
             tasklist = {}
         for key in tasklist:
-            task = Task(key,tasklist[key])
+            task = Task(key,tasklist[key],self)
             self.AddTaskToList(task)
             task.MainWindow = self
         self.ui.TaskListContainer.insertStretch(-1, 1)

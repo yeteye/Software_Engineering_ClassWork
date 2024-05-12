@@ -5,14 +5,15 @@ from PySide6.QtCore import Qt
 from PySide6.QtGui import QMouseEvent
 
 class Task(QWidget):
-    def __init__(self, name, timeLast):
+    def __init__(self, name, timeLast, MainWidow):
         super().__init__()
         # 保存任务名和持续时间
         self.name = name
         self.timeLast = timeLast
-        self.tasklist = self.loadTask()
+        self.MainWindow = MainWidow
+        self.MainWindow.tasklist = self.loadTask()
         self.setStyleSheet("border: 1px solid black;")
-        self.MainWindow = None
+
 
 
         # 创建水平布局
@@ -50,6 +51,7 @@ class Task(QWidget):
             self.layout().removeWidget(self.nameLabel)
             self.nameLabel.deleteLater()
             self.deleteLater()
+
         if action == EditTask:
             self.MainWindow.flag = 1
             self.MainWindow.CreatorUiInit(self)
@@ -68,14 +70,15 @@ class Task(QWidget):
         return tasklist
 
     def addTaskToProfile(self, name, time):
-        self.tasklist.update({name: time})
+        self.MainWindow.tasklist.update({name: time})
         tasklistFile = open("tasklist.json", "w")
-        tasklistFile.write(json.dumps(self.tasklist, indent=4))
+        tasklistFile.write(json.dumps(self.MainWindow.tasklist, indent=4))
         tasklistFile.close()
 
     def deleteTaskFromProfile(self, name):
-        self.tasklist.pop(name)
+        self.MainWindow.tasklist.pop(name)
         tasklistFile = open("tasklist.json", "w")
-        tasklistFile.write(json.dumps(self.tasklist, indent=4))
+        tasklistFile.write(json.dumps(self.MainWindow.tasklist, indent=4))
+        print(self.MainWindow.tasklist)
         tasklistFile.close()
 
