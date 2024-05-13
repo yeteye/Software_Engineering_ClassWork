@@ -19,7 +19,7 @@ class LevelSystem:
         data['plannedTime'] = 0
 
         with open(self.filename, 'w') as f:
-            json.dump(data, f)
+            json.dump(data, f, indent=4)
 
     def load_data(self):
         try:
@@ -30,7 +30,7 @@ class LevelSystem:
 
     def save_data(self):
         with open(self.filename, 'w') as f:
-            json.dump(self.data, f)
+            json.dump(self.data, f, indent=4)
 
     # task_time暂存每次每个任务的完成时间，完成后加入到经验值中，task_time清零
     def gain_experience(self):

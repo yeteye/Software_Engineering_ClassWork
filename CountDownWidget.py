@@ -99,7 +99,7 @@ class CountdownWidget(QWidget):
                     'plannedTime': self.timeLast
                 }
             with open("profile.json", 'w') as f:
-                json.dump(data, f)
+                json.dump(data, f, indent=4)
 
 
         self.LcdDisplay(self.time_left)
