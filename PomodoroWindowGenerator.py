@@ -79,6 +79,7 @@ class PomodoroWindowGenerator(QWidget):
             tasklist = json.load(tasklistFile)
         except ValueError:
             tasklist = {}
+        # self.clearAll(self.ui.TaskListContainer)
         for key in tasklist:
             task = Task(key,tasklist[key],self)
             self.AddTaskToList(task)
@@ -91,6 +92,7 @@ class PomodoroWindowGenerator(QWidget):
         self.ui.TaskListContainer.addWidget(task)
         self.tasklist.update({task.name: task.timeLast})
         return
+
 
     def CreateRoundedPixmap(self):
         pixmap = QPixmap(self.avatarPath).scaled(115, 115, Qt.KeepAspectRatio, Qt.SmoothTransformation)
@@ -122,5 +124,3 @@ class PomodoroWindowGenerator(QWidget):
         import sys
         self.WebWindow = WebWindow()
         self.WebWindow.show()
-
-

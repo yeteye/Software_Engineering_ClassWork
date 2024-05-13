@@ -74,11 +74,13 @@ class Task(QWidget):
         tasklistFile = open("tasklist.json", "w")
         tasklistFile.write(json.dumps(self.MainWindow.tasklist, indent=4))
         tasklistFile.close()
+        print(self.MainWindow.tasklist)
+
+
 
     def deleteTaskFromProfile(self, name):
         self.MainWindow.tasklist.pop(name)
         tasklistFile = open("tasklist.json", "w")
         tasklistFile.write(json.dumps(self.MainWindow.tasklist, indent=4))
-        print(self.MainWindow.tasklist)
         tasklistFile.close()
 

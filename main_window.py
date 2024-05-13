@@ -32,7 +32,6 @@ class Ui_MainWindow(object):
         MainWindow.setStyleSheet(u"#MainWindow{background-color: rgb(255, 82, 99)}\n"
 "")
 
-
         self.horizontalLayout = QHBoxLayout(MainWindow)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.verticalLayout = QVBoxLayout()
@@ -40,13 +39,19 @@ class Ui_MainWindow(object):
         self.User_Profile = QVBoxLayout()
         self.User_Profile.setObjectName(u"User_Profile")
         self.community = QPushButton(MainWindow)
+        self.community.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
         self.community.setObjectName(u"community")
         self.User_Profile.addWidget(self.community)
 
+
+
+
         self.avatar = QLabel(MainWindow)
         self.avatar.setObjectName(u"avatar")
+        self.avatar.setMaximumSize(QSize(115, 115))
         self.avatar.setScaledContents(True)
         self.avatar.setWordWrap(False)
+        self.avatar.setAlignment(Qt.AlignCenter)
         self.User_Profile.addWidget(self.avatar)
 
 
@@ -54,7 +59,7 @@ class Ui_MainWindow(object):
         self.TaskCreator = QPushButton(MainWindow)
         self.TaskCreator.setObjectName(u"TaskCreator")
         self.verticalLayout.addWidget(self.TaskCreator)
-
+        self.User_Profile.setAlignment(Qt.AlignTop | Qt.AlignHCenter)
 
         self.TaskPlace = QVBoxLayout()
         self.TaskPlace.setSpacing(1)
@@ -84,15 +89,13 @@ class Ui_MainWindow(object):
         self.ClockPlace.setStretch(0, 4)
         self.horizontalLayout.addLayout(self.ClockPlace)
 
+
         self.pet = QVBoxLayout()
         self.pet.setSpacing(6)
         self.pet.setObjectName(u"pet")
         self.widget = PetExpWidget(MainWindow)
         self.widget.setObjectName(u"widget")
-
         self.pet.addWidget(self.widget)
-
-
         self.horizontalLayout.addLayout(self.pet)
 
 
@@ -105,6 +108,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QMetaObject.connectSlotsByName(MainWindow)
     # setupUi
+
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Pomodoro", None))

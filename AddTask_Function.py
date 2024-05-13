@@ -15,31 +15,33 @@ class AddTaskWindow(QDialog, Ui_AddTask):
         if self.lineEdit.text() == "":
             return
         else:
-            for taskname in self.FatherWindow.tasklist:
-                if taskname == self.lineEdit.text():
-                    return
             task_name = self.lineEdit.text()
             task_time = self.timeEdit.time().minute() * 60 + self.timeEdit.time().second()
+            Stretch = self.FatherWindow.ui.TaskListContainer.takeAt(self.FatherWindow.ui.TaskListContainer.count() - 1)
+            self.FatherWindow.ui.TaskListContainer.removeItem(Stretch)
             if self.FatherWindow.flag == 1:
+                self.FatherWindow.ui.TaskListContainer.removeWidget(self.Task)
                 self.Task.deleteTaskFromProfile(self.Task.name)
                 self.Task.timeLast = task_time
                 self.Task.name = task_name
                 self.Task.addTaskToProfile(self.Task.name, self.Task.timeLast)
                 self.Task.nameLabel.setText(task_name)
-                self.FatherWindow.ui.flag = 0
+                self.FatherWindow.AddTaskToList(self.Task)
+                self.FatherWindow.flag = 0
             else:
                 # 创建Task对象并设置属性
+                for taskName in self.FatherWindow.tasklist:
+                    if taskName == self.lineEdit.text():
+                        return
                 self.Task = Task(task_name, task_time, self.FatherWindow)
                 self.Task.addTaskToProfile(task_name, task_time)
                 self.Task.AddTaskUi = self
                 self.Task.MainWindow = self.FatherWindow
 
                 # 将Task添加到TaskList中
-                Stretch = self.FatherWindow.ui.TaskListContainer.takeAt(
-                    self.FatherWindow.ui.TaskListContainer.count() - 1)
-                self.FatherWindow.ui.TaskListContainer.removeItem(Stretch)
+
                 self.FatherWindow.AddTaskToList(self.Task)
-                self.FatherWindow.ui.TaskListContainer.insertStretch(-1, 1)
+            self.FatherWindow.ui.TaskListContainer.insertStretch(-1, 1)
 
     def ShakeWindow(self):
         # 定义动画效果，抖动窗口
