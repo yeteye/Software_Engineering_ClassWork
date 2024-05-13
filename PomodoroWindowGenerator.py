@@ -5,6 +5,7 @@ from PySide6.QtGui import QMouseEvent, Qt, QPixmap, QPainter, QPainterPath
 import json
 
 from WebWindow import WebWindow
+from levelSystem import LevelSystem
 from main_window import Ui_MainWindow
 from AddTask_Function import AddTaskWindow
 from Task import Task
@@ -27,6 +28,7 @@ class PomodoroWindowGenerator(QWidget):
         self.ui.avatar.mousePressEvent = self.changeAvatar
         self.ui.TaskCreator.mousePressEvent = self.createTaskUI
         self.ui.community.mousePressEvent = self.TurnToWeb
+        self.ui.clock.ExpShow = self.ui.expShow
 
 
     def INITIALIZE(self):

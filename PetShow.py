@@ -21,7 +21,6 @@ class GIFWindow(QWidget):
         # 开始动画
         self.movie.start()
 
-
         # 创建布局并将QLabel添加到其中
         layout = QVBoxLayout(self)
         layout.addWidget(self.gif_label)

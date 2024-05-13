@@ -4,23 +4,6 @@ class LevelSystem:
         self.filename = "profile.json"
         self.data = self.load_data()
 
-    #初始化：设定等级为1，经验为0
-    def initialize_profile(self):
-        try:
-            with open(self.filename, 'r') as f:
-                data = json.load(f)
-        except FileNotFoundError:
-            data = {}
-
-        # 初始化指定的字段
-        data['level'] = 1
-        data['exp'] = 0
-        data['task_times'] = 0
-        data['plannedTime'] = 0
-
-        with open(self.filename, 'w') as f:
-            json.dump(data, f)
-
     def load_data(self):
         try:
             with open(self.filename, 'r') as f:
@@ -31,10 +14,13 @@ class LevelSystem:
     def save_data(self):
         with open(self.filename, 'w') as f:
             json.dump(self.data, f)
+        f.close()
+
 
     # task_time暂存每次每个任务的完成时间，完成后加入到经验值中，task_time清零
     def gain_experience(self):
-        self.data['exp'] += self.data['plannedTime'] / 60   #plannedTime为完成任务规定时间，计算规则为每一分钟计入一经验
+        self.data = self.load_data()
+        self.data['exp'] += self.data['plannedTime']   #plannedTime为完成任务规定时间，计算规则为每1秒计入一经验
         self.data['plannedTime'] = 0
         self.data['task_times'] += 1
         self.save_data()
@@ -49,6 +35,7 @@ class LevelSystem:
             return current_level * 100  #升级机制为每一等级升级到下一等级的所需经验值为当前等级值*100
 
     def levelCalculate(self):
+        self.gain_experience()
         while True:
             exp_to_next_level = self.experience_to_next_level()
             if exp_to_next_level == 0:  #当等级为100级时不再升级
@@ -57,4 +44,5 @@ class LevelSystem:
                 self.data['exp'] -= exp_to_next_level
                 self.data['level'] += 1
             else:
+                self.save_data()
                 break

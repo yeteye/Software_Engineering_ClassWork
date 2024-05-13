@@ -3,15 +3,13 @@ from PySide6 import QtWidgets
 from PySide6.QtWidgets import QSizePolicy, QLabel, QVBoxLayout, QWidget, QProgressBar
 import json
 
-with open("profile.json", 'r') as file:
-    data = json.load(file)
 class Exp_Show(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.level = data['level']
-        self.exp = data['exp']
-        self.display_text = (f"<br><br>LV：{self.level}"
-                             f"<br>EXP：{self.exp}")
+        self.filename = "profile.json"
+        self.data = self.load_data()
+        self.display_text = (f"<br><br>LV：{self.data['level']}"
+                             f"<br>EXP：{self.data['exp']}")
 
         layout = QVBoxLayout(self)
 
@@ -26,15 +24,11 @@ class Exp_Show(QWidget):
         #设置字体颜色
         self.label.setStyleSheet("color: green;")
         # 创建一个进度条对象
-        progress_bar = QProgressBar()
+        self.progress_bar = QProgressBar()
         # 设置进度条的范围和初始值
-        progress_bar.setMinimum(0)
-        progress_bar.setMaximum(int(self.level)*100)
-        progress_bar.setValue(int(self.exp))  # 设置初始值
-        progress_bar.setFormat(f"{(int(self.exp)/(int(self.level)*100))*100:.2f}%")
-
+        self.SetProgressBar()
         #进度条外观设置
-        progress_bar.setStyleSheet(
+        self.progress_bar.setStyleSheet(
             "QProgressBar {"
             "    border: 2px solid grey;"
             "    border-radius: 5px;"
@@ -53,7 +47,7 @@ class Exp_Show(QWidget):
 
         # 显示的大小策略为尽可能扩展
         layout.addWidget(self.label)
-        layout.addWidget(progress_bar)
+        layout.addWidget(self.progress_bar)
 
         # 顶靠
         verticalSpacer = QtWidgets.QSpacerItem(
@@ -63,9 +57,23 @@ class Exp_Show(QWidget):
 
     def update_labels(self):
         # 获取等级和经验值
-        self.level = data['level']
-        self.exp = data['exp']
-
+        self.data = self.load_data()
+        print(self.data['exp'])
         # 更新 QLabel 显示的文本
-        self.display_text = (f"<br><br>LV：{self.level}"
-                             f"<br>EXP：{self.exp}")
+        self.display_text = (f"<br><br>LV：{self.data['level']}"
+                             f"<br>EXP：{self.data['exp']}")
+        self.label.setText(self.display_text)
+        self.SetProgressBar()
+
+    def load_data(self):
+        try:
+            with open(self.filename, 'r') as f:
+                return json.load(f)
+        except FileNotFoundError:
+            return {}
+
+    def SetProgressBar(self):
+        self.progress_bar.setMinimum(0)
+        self.progress_bar.setMaximum(self.data['level'] * 100)
+        self.progress_bar.setValue(self.data['exp'])  # 设置初始值
+        self.progress_bar.setFormat(f"{(self.data['exp'] / self.data['level']):.2f}%")

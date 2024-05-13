@@ -15,6 +15,8 @@ class CountdownWidget(QWidget):
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_display)
         self.display_text = "25:00"
+        self.LevelSystem = LevelSystem()
+        self.ExpShow = None
 
 
         layout = QVBoxLayout(self)
@@ -100,6 +102,9 @@ class CountdownWidget(QWidget):
                 }
             with open("profile.json", 'w') as f:
                 json.dump(data, f)
+            self.LevelSystem.levelCalculate()
+            self.ExpShow.update_labels()
+
 
 
         self.LcdDisplay(self.time_left)
