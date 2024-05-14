@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QSizePolicy, QLabel, QVBoxLayout, QWidget, QProgre
 from PySide6.QtGui import QFont
 import json
 
-class Exp_Show(QWidget):
+class ExpShow(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.filename = "profile.json"
