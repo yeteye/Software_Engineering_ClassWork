@@ -28,7 +28,7 @@ class PomodoroWindowGenerator(QWidget):
         self.ui.avatar.mousePressEvent = self.changeAvatar
         self.ui.TaskCreator.mousePressEvent = self.createTaskUI
         self.ui.community.mousePressEvent = self.TurnToWeb
-        self.ui.clock.ExpShow = self.ui.expShow
+        self.ui.clock.ExpShow = self.ui.widget_2  #原expShow
 
 
     def INITIALIZE(self):

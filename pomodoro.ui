@@ -97,7 +97,14 @@
       <number>6</number>
      </property>
      <item>
-      <widget class="PetExpWidget" name="widget" native="true"/>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="PetShow" name="widget" native="true"/>
+       </item>
+       <item>
+        <widget class="ExpShow" name="widget_2" native="true"/>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
@@ -111,9 +118,15 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>PetExpWidget</class>
+   <class>ExpShow</class>
    <extends>QWidget</extends>
-   <header>PetExpWidget.h</header>
+   <header>ExpShow.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PetShow</class>
+   <extends>QWidget</extends>
+   <header>PetShow.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
