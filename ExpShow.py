@@ -3,18 +3,19 @@ from PySide6 import QtWidgets
 from PySide6.QtWidgets import QSizePolicy, QLabel, QVBoxLayout, QWidget, QProgressBar
 from PySide6.QtGui import QFont
 import json
+import time
 
 class ExpShow(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.filename = "profile.json"
         self.data = self.load_data()
-
+        #self.pre_exp = self.data['exp']
         self.display_text = ("""
             <br><br><span style="color: blue;">LV: </span>
             <span style="color: green;">""" + f"{self.data['level']}" + """</span>
-            <br><span style="color: blue;">Exp：</span>
-            <span style="color: green;">""" + f"{self.data['exp']}/{self.data['level']*100}" + """</span>
+            <br><span style="color: blue;">Exp:</span>
+            <span style="color: green;">""" + f"{self.data['exp']}" + """</span>
                 """)
 
         layout = QVBoxLayout(self)
@@ -84,6 +85,7 @@ class ExpShow(QWidget):
 
     def update_labels(self):
         # 获取等级和经验值
+        #self.pre_exp = self.data['exp']
         self.data = self.load_data()
 
         # 更新 QLabel 显示的文本
@@ -92,7 +94,7 @@ class ExpShow(QWidget):
         self.display_text = ("""
     <br><br><span style="color: blue;">LV: </span>
     <span style="color: green;">"""+f"{self.data['level']}"+"""</span>
-    <br><span style="color: blue;">Exp：</span>
+    <br><span style="color: blue;">Exp:</span>
     <span style="color: green;">"""+f"{self.data['exp']}"+"""</span>
         """)
         self.label.setText(self.display_text)
@@ -106,7 +108,11 @@ class ExpShow(QWidget):
             return {}
 
     def SetProgressBar(self):
+        #delta = self.data['exp'] - self.pre_exp
+
         self.progress_bar.setMinimum(0)
         self.progress_bar.setMaximum(self.data['level'] * 100)
-        self.progress_bar.setValue(self.data['exp'])  # 设置初始值
+
+        self.progress_bar.setValue(self.data['exp'])
         self.progress_bar.setFormat(f"{(self.data['exp'] / self.data['level']):.2f}%")
+        #self.pre_exp = self.data['exp']
