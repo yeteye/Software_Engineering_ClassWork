@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber, QSi
 from PySide6.QtCore import QTimer
 import json
 from levelSystem import LevelSystem
+from PetShow import PetShow
 
 class CountdownWidget(QWidget):
     def __init__(self, parent=None):
@@ -17,6 +18,7 @@ class CountdownWidget(QWidget):
         self.display_text = "25:00"
         self.LevelSystem = LevelSystem()
         self.ExpShow = None
+        self.PetShow = None
 
 
         layout = QVBoxLayout(self)
@@ -60,6 +62,7 @@ class CountdownWidget(QWidget):
 
     # button功能实现
     def start_countdown(self):
+        self.PetShow.change_state(2)
         self.time_Update()
         self.LcdDisplay(self.time_left)
         self.timer.stop()
@@ -68,6 +71,7 @@ class CountdownWidget(QWidget):
         self.stop_button.setEnabled(True)
 
     def stop_countdown(self):
+        self.PetShow.change_state(3)
         self.flag = 2
         self.time_Update()
         self.LcdDisplay(self.time_left)
