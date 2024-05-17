@@ -1,4 +1,4 @@
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QTimer
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import QSizePolicy, QLabel, QVBoxLayout, QWidget, QProgressBar
 from PySide6.QtGui import QFont
@@ -10,14 +10,15 @@ class ExpShow(QWidget):
         super().__init__(parent)
         self.filename = "profile.json"
         self.data = self.load_data()
-        #self.pre_exp = self.data['exp']
+        self.progressBarLevel = self.data['level']
+        self.progressBarExp = self.data['exp']
         self.display_text = ("""
             <br><br><span style="color: blue;">LV: </span>
             <span style="color: green;">""" + f"{self.data['level']}" + """</span>
             <br><span style="color: blue;">Exp:</span>
             <span style="color: green;">""" + f"{self.data['exp']}/{self.data['level'] * 100}" + """</span>
                 """)
-
+        self.clock = None
         layout = QVBoxLayout(self)
 
         #显示文本
@@ -29,8 +30,6 @@ class ExpShow(QWidget):
         font.setPointSize(20)  # 设置字体大小为 20
 
         #设置字体外观
-
-        #self.label.setStyleSheet("color: green;")
         font.setFamily('Comic Sans MS')
         font.setBold(True)  # 设置字体粗细
         font.setItalic(True)  # 设置斜体
@@ -43,9 +42,8 @@ class ExpShow(QWidget):
         self.progress_bar = QProgressBar()
         # 设置进度条的范围和初始值
         self.SetProgressBar()
-        #进度条外观设置
 
-        #可根据属性更改
+        #进度条外观设置
         self.setStyleSheet("""
                     QProgressBar {
                         border: 3px solid #FFD700;  /* 金色边框 */
@@ -83,14 +81,14 @@ class ExpShow(QWidget):
         )
         layout.addItem(verticalSpacer)
 
+        # 设置 QTimer
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_progress)
+        self.timer.start(5)  # 每 100 毫秒更新一次
+
     def update_labels(self):
-        # 获取等级和经验值
-        #self.pre_exp = self.data['exp']
         self.data = self.load_data()
-
         # 更新 QLabel 显示的文本
-
-
         self.display_text = ("""
     <br><br><span style="color: blue;">LV: </span>
     <span style="color: green;">"""+f"{self.data['level']}"+"""</span>
@@ -98,7 +96,7 @@ class ExpShow(QWidget):
     <span style="color: green;">"""+f"{self.data['exp']}/{self.data['level'] * 100}"+"""</span>
         """)
         self.label.setText(self.display_text)
-        self.SetProgressBar()
+        self.UpdateProgressBar()
 
     def load_data(self):
         try:
@@ -108,11 +106,24 @@ class ExpShow(QWidget):
             return {}
 
     def SetProgressBar(self):
-        #delta = self.data['exp'] - self.pre_exp
-
         self.progress_bar.setMinimum(0)
         self.progress_bar.setMaximum(self.data['level'] * 100)
-
         self.progress_bar.setValue(self.data['exp'])
         self.progress_bar.setFormat(f"{(self.data['exp'] / self.data['level']):.2f}%")
-        #self.pre_exp = self.data['exp']
+
+    def UpdateProgressBar(self):
+        self.progress_bar.setMaximum(self.data['level'] * 100)
+
+    def update_progress(self):
+        if self.progressBarExp < self.data['exp']:
+            self.progressBarExp += 1
+            self.progress_bar.setValue(self.progressBarExp)
+            self.progress_bar.setFormat(f"{(self.progressBarExp / (self.progressBarLevel * 100)) * 100:.2f}%")
+        elif self.progressBarLevel < self.data['level']:
+            self.progressBarExp = 0
+            self.progressBarLevel += 1
+            self.progress_bar.setValue(self.progressBarExp)
+            self.progress_bar.setFormat(f"{(self.progressBarExp / (self.progressBarLevel * 100)) * 100:.2f}%")
+
+    def AddClock(self, Clock):
+        self.clock = Clock

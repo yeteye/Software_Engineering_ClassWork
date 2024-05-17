@@ -16,6 +16,8 @@ class PomodoroWindowGenerator(QWidget):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.filename = "pomodoro.json"
+        self.data = self.load_data()
         self.flag = 0
         self.TaskCreator_ui = None
         self.tasklist = {}
@@ -29,6 +31,7 @@ class PomodoroWindowGenerator(QWidget):
         self.ui.TaskCreator.mousePressEvent = self.createTaskUI
         self.ui.community.mousePressEvent = self.TurnToWeb
         self.ui.clock.ExpShow = self.ui.widget_2  #原expShow
+        self.ui.clock.ExpShow.AddClock(self.ui.clock)
 
 
     def INITIALIZE(self):
@@ -126,3 +129,18 @@ class PomodoroWindowGenerator(QWidget):
         import sys
         self.WebWindow = WebWindow()
         self.WebWindow.show()
+
+    def load_data(self):
+        try:
+            with open(self.filename, 'r') as f:
+                return json.load(f)
+        except FileNotFoundError:
+            return {}
+
+    def save_data(self):
+        with open(self.filename, 'w') as f:
+            json.dump(self.data, f)
+        f.close()
+
+    def AddMainWindow(self):
+        self.ui.clock.MainWindow = self
