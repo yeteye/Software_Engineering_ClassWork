@@ -4,17 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bfc0a601-fabb-477f-8855-9de13ba102f2" name="更改" comment="修改小bug">
+    <list default="true" id="bfc0a601-fabb-477f-8855-9de13ba102f2" name="更改" comment="changed">
+      <change afterPath="$PROJECT_DIR$/image/PET/Study/studyStart_000_250.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/PET/Study/studyStart_001_250.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/PET/Study/studyStart_002_250.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/PET/Study/studyStart_003_250.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/PET/Study/studyStart_004_250.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/PET/Study/studyStart_005_250.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/PET/Study/studyStart_006_250.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/PET/Study/studyStart_007_250.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/PET/Study/studyStart_008_250.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/PET/Study/studyStart_009_250.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/image/PET/Study/studyStart_010_250.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CountDownWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/CountDownWidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ExpShow.py" beforeDir="false" afterPath="$PROJECT_DIR$/ExpShow.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PetExpWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/PetExpWidget.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PetShow.py" beforeDir="false" afterPath="$PROJECT_DIR$/PetShow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PomodoroWindowGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/PomodoroWindowGenerator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/levelSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/levelSystem.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main_window.py" beforeDir="false" afterPath="$PROJECT_DIR$/main_window.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/profile.json" beforeDir="false" afterPath="$PROJECT_DIR$/profile.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tasklist.json" beforeDir="false" afterPath="$PROJECT_DIR$/tasklist.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,12 +68,12 @@
     &quot;assignee&quot;: &quot;Zeiwoos&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:yeteye/Software_Engineering_ClassWork.git",
-    "accountId": "87d22575-a7ee-4c37-9b4f-c46e747c3727"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:yeteye/Software_Engineering_ClassWork.git&quot;,
+    &quot;accountId&quot;: &quot;1f5febb9-4da5-4b23-8d1e-3fb12d70f47f&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -92,6 +100,7 @@
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Python.AddTask.executor&quot;: &quot;Run&quot;,
     &quot;Python.Menu.executor&quot;: &quot;Run&quot;,
+    &quot;Python.PetShow.executor&quot;: &quot;Run&quot;,
     &quot;Python.PomodoroWindowGenerator.executor&quot;: &quot;Run&quot;,
     &quot;Python.countdownwidget.executor&quot;: &quot;Run&quot;,
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
@@ -101,7 +110,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/86199/All_File/Programs/Code_PyCharm/Software/main.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Study/NLP/Assignment 1/Assignment1&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -121,8 +130,8 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.11 (Software)" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="SDK_NAME" value="Python 3.9 (D:) (2)" />
+      <option name="WORKING_DIRECTORY" value="D:\Study\SE上机\pomodoro\beta&amp;release\release1.0\Software_Engineering_ClassWork" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -140,7 +149,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d68999036c7f-b11f5e8da5ad-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.14475.56" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PY-241.14494.241" />
+        <option value="bundled-python-sdk-0509580d9d50-28c9f5db9ffe-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.14494.241" />
       </set>
     </attachedChunks>
   </component>
@@ -169,6 +179,13 @@
       <workItem from="1715507210911" duration="1573000" />
       <workItem from="1715514493368" duration="74000" />
       <workItem from="1715527336400" duration="661000" />
+      <workItem from="1715674766658" duration="5000" />
+      <workItem from="1715674783728" duration="1036000" />
+      <workItem from="1715675867113" duration="829000" />
+      <workItem from="1715676716060" duration="6072000" />
+      <workItem from="1715849602559" duration="139000" />
+      <workItem from="1715906717483" duration="9927000" />
+      <workItem from="1715919838944" duration="6071000" />
     </task>
     <task id="LOCAL-00001" summary="尝试实现添加Task">
       <option name="closed" value="true" />
@@ -354,7 +371,31 @@
       <option name="project" value="LOCAL" />
       <updated>1715597012362</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="changed">
+      <option name="closed" value="true" />
+      <created>1715677119567</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1715677119567</updated>
+    </task>
+    <task id="LOCAL-00025" summary="changed">
+      <option name="closed" value="true" />
+      <created>1715678609130</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1715678609130</updated>
+    </task>
+    <task id="LOCAL-00026" summary="changed">
+      <option name="closed" value="true" />
+      <created>1715913316262</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1715913316262</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,16 +446,19 @@
     <MESSAGE value="add_new_widget" />
     <MESSAGE value="修改Edit后TaskList和缓存顺序不一致问题" />
     <MESSAGE value="修改小bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改小bug" />
+    <MESSAGE value="changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/main_py$test.coverage" NAME="test 覆盖结果" MODIFIED="1715909964395" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main 覆盖结果" MODIFIED="1715933354297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Software$PomodoroWindowGenerator.coverage" NAME="main 覆盖结果" MODIFIED="1715006456099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Software_Engineering_ClassWork$main.coverage" NAME="main 覆盖结果" MODIFIED="1715528112846" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/Software$countdownwidget.coverage" NAME="countdownwidget 覆盖结果" MODIFIED="1714118381684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Software$main_window.coverage" NAME="main_window 覆盖结果" MODIFIED="1714107115482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Software$main.coverage" NAME="main 覆盖结果" MODIFIED="1715614980056" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/main_py$main.coverage" NAME="main 覆盖结果" MODIFIED="1715003560599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Software$AddTask.coverage" NAME="AddTask 覆盖结果" MODIFIED="1714114603504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Software$test.coverage" NAME="Menu 覆盖结果" MODIFIED="1715345467039" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Software$PomodoroWindowGenerator.coverage" NAME="main 覆盖结果" MODIFIED="1715006456099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Software$main_window.coverage" NAME="main_window 覆盖结果" MODIFIED="1714107115482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/main_py$PetShow.coverage" NAME="PetShow 覆盖结果" MODIFIED="1715911056659" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Software$countdownwidget.coverage" NAME="countdownwidget 覆盖结果" MODIFIED="1714118381684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
