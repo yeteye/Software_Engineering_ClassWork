@@ -1,6 +1,6 @@
 from PySide6 import QtCore
-from PySide6.QtGui import QFont
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber, QSizePolicy, QLabel
+from PySide6.QtGui import QFont, QPixmap, QIcon
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber, QSizePolicy, QLabel, QMessageBox
 from PySide6.QtCore import QTimer
 import json
 from levelSystem import LevelSystem
@@ -13,6 +13,7 @@ class CountdownWidget(QWidget):
         self.timeLast = 0
         self.task_times = 0
         self.time_left = 1500
+        self.ExpShow = None
         self.timer = QTimer()
         self.timer.timeout.connect(self.update_display)
         self.display_text = "25:00"
@@ -38,7 +39,7 @@ class CountdownWidget(QWidget):
         font.setBold(True)
         font.setFamily("Arial")
 
-        #添加中间的使用说明部分和任务完成次数显示
+        # 添加中间的使用说明部分和任务完成次数显示
         self.explain = QLabel(self)
         self.explain.setFont(font)
         self.explain.setObjectName(u"explain")
@@ -86,6 +87,18 @@ class CountdownWidget(QWidget):
         self.time_left -= 1
         if self.time_left <= 0:
             self.timer.stop()
+            if not self.start_button.isEnabled():
+                if self.MainWindow:
+                    self.MainWindow.shake_signal.emit()
+                message_box = QMessageBox(QMessageBox.Information, "工作完成!", "工作完成!")
+                message_box.setWindowIcon(QIcon(QPixmap("image/f3006b49c9f1fc1519d2bf688fc52e70.ico")))
+                message_box.exec()
+            if self.start_button.isEnabled():
+                if self.MainWindow:
+                    self.MainWindow.shake_signal.emit()
+                message_box = QMessageBox(QMessageBox.Information, "休息完成!", "休息完成!")
+                message_box.setWindowIcon(QIcon(QPixmap("image/f3006b49c9f1fc1519d2bf688fc52e70.ico")))
+                message_box.exec()
             self.start_button.setEnabled(True)
             self.stop_button.setEnabled(False)
             self.time_left = 0

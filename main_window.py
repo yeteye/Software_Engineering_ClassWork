@@ -30,26 +30,8 @@ class Ui_MainWindow(object):
         icon = QIcon()
         icon.addFile(u"image/f3006b49c9f1fc1519d2bf688fc52e70.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
-
-       #主窗口调整
-
-        MainWindow.setStyleSheet("""
-            #MainWindow {
-                background-color: rgb(255, 82, 99);
-            }
-            QPushButton {
-                background-color: #4CAF50;
-                color: white;
-                
-            }
-            QPushButton:hover {
-                background-color: #45a049;
-            }
-        """)
-
-
-
-
+        MainWindow.setStyleSheet(u"#MainWindow{background-color: rgb(255, 82, 99)}\n"
+"")
         self.horizontalLayout = QHBoxLayout(MainWindow)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.verticalLayout = QVBoxLayout()
@@ -67,21 +49,16 @@ class Ui_MainWindow(object):
         self.avatar.setMaximumSize(QSize(115, 115))
         self.avatar.setScaledContents(True)
         self.avatar.setWordWrap(False)
-        self.avatar.setAlignment(Qt.AlignCenter)
         self.User_Profile.addWidget(self.avatar)
-
-
         self.verticalLayout.addLayout(self.User_Profile)
+
 
         self.TaskCreator = QPushButton(MainWindow)
         self.TaskCreator.setObjectName(u"TaskCreator")
-
         self.verticalLayout.addWidget(self.TaskCreator)
-
         self.TaskPlace = QVBoxLayout()
         self.TaskPlace.setSpacing(1)
         self.TaskPlace.setObjectName(u"TaskPlace")
-
         self.TaskList = QGroupBox(MainWindow)
         self.TaskList.setObjectName(u"TASKLIST")
         self.TaskListContainer = QVBoxLayout()
@@ -92,10 +69,11 @@ class Ui_MainWindow(object):
         self.TaskPlace.addWidget(self.TaskList)
         self.verticalLayout.addLayout(self.TaskPlace)
 
+
         self.verticalLayout.setStretch(0, 3)
         self.verticalLayout.setStretch(2, 5)
-
         self.horizontalLayout.addLayout(self.verticalLayout)
+
 
         self.ClockPlace = QVBoxLayout()
         self.ClockPlace.setObjectName(u"ClockPlace")
@@ -103,15 +81,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.clock = CountdownWidget(MainWindow)
         self.clock.setObjectName(u"clock")
-
         self.verticalLayout_5.addWidget(self.clock)
-
-
         self.ClockPlace.addLayout(self.verticalLayout_5)
-
         self.ClockPlace.setStretch(0, 4)
-
         self.horizontalLayout.addLayout(self.ClockPlace)
+
+
+
 
         self.pet = QVBoxLayout()
         self.pet.setSpacing(6)
