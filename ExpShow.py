@@ -9,7 +9,7 @@ class Exp_Show(QWidget):
         self.filename = "profile.json"
         self.data = self.load_data()
         self.display_text = (f"<br><br>LV：{self.data['level']}"
-                             f"<br>EXP：{self.data['exp']}")
+                             f"<br>EXP：{self.data['exp']}/{self.data['level']*100}")
 
         layout = QVBoxLayout(self)
 
@@ -61,7 +61,7 @@ class Exp_Show(QWidget):
         print(self.data['exp'])
         # 更新 QLabel 显示的文本
         self.display_text = (f"<br><br>LV：{self.data['level']}"
-                             f"<br>EXP：{self.data['exp']}")
+                             f"<br>EXP：{self.data['exp']}/{self.data['level']*100}")
         self.label.setText(self.display_text)
         self.SetProgressBar()
 
