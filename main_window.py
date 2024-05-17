@@ -49,22 +49,16 @@ class Ui_MainWindow(object):
         self.avatar.setMaximumSize(QSize(115, 115))
         self.avatar.setScaledContents(True)
         self.avatar.setWordWrap(False)
-        self.avatar.setAlignment(Qt.AlignCenter)
         self.User_Profile.addWidget(self.avatar)
-
-
         self.verticalLayout.addLayout(self.User_Profile)
+
 
         self.TaskCreator = QPushButton(MainWindow)
         self.TaskCreator.setObjectName(u"TaskCreator")
-
         self.verticalLayout.addWidget(self.TaskCreator)
-        self.User_Profile.setAlignment(Qt.AlignTop | Qt.AlignHCenter)
-
         self.TaskPlace = QVBoxLayout()
         self.TaskPlace.setSpacing(1)
         self.TaskPlace.setObjectName(u"TaskPlace")
-
         self.TaskList = QGroupBox(MainWindow)
         self.TaskList.setObjectName(u"TASKLIST")
         self.TaskListContainer = QVBoxLayout()
@@ -75,10 +69,11 @@ class Ui_MainWindow(object):
         self.TaskPlace.addWidget(self.TaskList)
         self.verticalLayout.addLayout(self.TaskPlace)
 
+
         self.verticalLayout.setStretch(0, 3)
         self.verticalLayout.setStretch(2, 5)
-
         self.horizontalLayout.addLayout(self.verticalLayout)
+
 
         self.ClockPlace = QVBoxLayout()
         self.ClockPlace.setObjectName(u"ClockPlace")
@@ -86,15 +81,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
         self.clock = CountdownWidget(MainWindow)
         self.clock.setObjectName(u"clock")
-
         self.verticalLayout_5.addWidget(self.clock)
-
-
         self.ClockPlace.addLayout(self.verticalLayout_5)
-
         self.ClockPlace.setStretch(0, 4)
-
         self.horizontalLayout.addLayout(self.ClockPlace)
+
+
+
 
         self.pet = QVBoxLayout()
         self.pet.setSpacing(6)
