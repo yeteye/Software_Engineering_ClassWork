@@ -1,9 +1,8 @@
-from PySide6.QtCore import QTime, QCoreApplication
+from PySide6.QtCore import QTime, QCoreApplication, QPropertyAnimation, QRect, Signal, QTimer
 from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QFileDialog, QDialog, QDialogButtonBox, QLineEdit, \
     QScrollArea, QVBoxLayout, QFrame, QSizePolicy
 from PySide6.QtGui import QMouseEvent, Qt, QPixmap, QPainter, QPainterPath
 import json
-
 from WebWindow import WebWindow
 from levelSystem import LevelSystem
 from main_window import Ui_MainWindow
@@ -11,7 +10,7 @@ from AddTask_Function import AddTaskWindow
 from Task import Task
 
 class PomodoroWindowGenerator(QWidget):
-
+    shake_signal = Signal()
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
@@ -29,6 +28,10 @@ class PomodoroWindowGenerator(QWidget):
         self.ui.TaskCreator.mousePressEvent = self.createTaskUI
         self.ui.community.mousePressEvent = self.TurnToWeb
         self.ui.clock.ExpShow = self.ui.widget_2  #原expShow
+        self.ui.clock.MainWindow = self
+        self.shake_signal.connect(self.start_shake)
+        self.shake_timer = QTimer(self)
+        self.shake_timer.timeout.connect(self.shake_window)
 
 
     def INITIALIZE(self):
@@ -126,3 +129,22 @@ class PomodoroWindowGenerator(QWidget):
         import sys
         self.WebWindow = WebWindow()
         self.WebWindow.show()
+
+    def start_shake(self):
+        self.shake_timer.start(50)
+        self.shake_count = 0
+        self.original_pos = self.pos()
+
+    def shake_window(self):
+        dx = dy = 5
+        if self.shake_count % 2 == 0:
+            dx = -dx
+        if (self.shake_count // 2) % 2 == 0:
+            dy = -dy
+
+        self.move(self.original_pos.x() + dx, self.original_pos.y() + dy)
+        self.shake_count += 1
+
+        if self.shake_count == 10:
+            self.shake_timer.stop()
+            self.move(self.original_pos)

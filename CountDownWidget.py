@@ -1,10 +1,9 @@
 from PySide6 import QtCore
-from PySide6.QtGui import QFont
-from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber, QSizePolicy, QLabel
+from PySide6.QtGui import QFont, QPixmap, QIcon
+from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber, QSizePolicy, QLabel, QMessageBox
 from PySide6.QtCore import QTimer
 import json
 from levelSystem import LevelSystem
-
 class CountdownWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -17,7 +16,7 @@ class CountdownWidget(QWidget):
         self.display_text = "25:00"
         self.LevelSystem = LevelSystem()
         self.ExpShow = None
-
+        self.MainWindow = None
 
         layout = QVBoxLayout(self)
         layout.setSpacing(20)
@@ -36,7 +35,7 @@ class CountdownWidget(QWidget):
         font.setBold(True)
         font.setFamily("Arial")
 
-        #添加中间的使用说明部分和任务完成次数显示
+        # 添加中间的使用说明部分和任务完成次数显示
         self.explain = QLabel(self)
         self.explain.setFont(font)
         self.explain.setObjectName(u"explain")
@@ -82,6 +81,18 @@ class CountdownWidget(QWidget):
         self.time_left -= 1
         if self.time_left <= 0:
             self.timer.stop()
+            if not self.start_button.isEnabled():
+                if self.MainWindow:
+                    self.MainWindow.shake_signal.emit()
+                message_box = QMessageBox(QMessageBox.Information, "工作完成!", "工作完成!")
+                message_box.setWindowIcon(QIcon(QPixmap("image/f3006b49c9f1fc1519d2bf688fc52e70.ico")))
+                message_box.exec()
+            if self.start_button.isEnabled():
+                if self.MainWindow:
+                    self.MainWindow.shake_signal.emit()
+                message_box = QMessageBox(QMessageBox.Information, "休息完成!", "休息完成!")
+                message_box.setWindowIcon(QIcon(QPixmap("image/f3006b49c9f1fc1519d2bf688fc52e70.ico")))
+                message_box.exec()
             self.start_button.setEnabled(True)
             self.stop_button.setEnabled(False)
             self.time_left = 0
@@ -105,9 +116,8 @@ class CountdownWidget(QWidget):
             self.LevelSystem.levelCalculate()
             self.ExpShow.update_labels()
 
-
-
         self.LcdDisplay(self.time_left)
+
     # lcd显示实现
     def LcdDisplay(self, Time):
         minutes = Time // 60
@@ -130,5 +140,5 @@ class CountdownWidget(QWidget):
         self.explain.setText("直接按下'开始'默认专注" + str(25) + "mins\n" + "\n" +
                              "按下'休息'固定休息" + str(5) + "mins\n" +
                              "可选择点击右侧已创建任务\n以修改专注时间\n" + "\n" +
-                             "(最多只能创建"+str(10)+"个任务)"+"\n"
-                             "已专注次数:  " + str(self.task_times))
+                             "(最多只能创建" + str(10) + "个任务)" + "\n"
+                                                                     "已专注次数:  " + str(self.task_times))
