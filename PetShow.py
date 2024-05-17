@@ -19,7 +19,7 @@ class PetShow(QWidget):
 
     def load_images(self,image_folder):
         # 加载文件夹中的所有 PNG 图像
-        self.images = []
+        self.images.clear()
         self.image_folder = image_folder
         for filename in sorted(os.listdir(self.image_folder)):
             if filename.endswith('.png'):

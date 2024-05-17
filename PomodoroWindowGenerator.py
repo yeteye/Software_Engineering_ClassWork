@@ -29,8 +29,10 @@ class PomodoroWindowGenerator(QWidget):
         self.ui.avatar.mousePressEvent = self.changeAvatar
         self.ui.TaskCreator.mousePressEvent = self.createTaskUI
         self.ui.community.mousePressEvent = self.TurnToWeb
+
         self.ui.clock.ExpShow = self.ui.widget_2  #原expShow
         self.ui.clock.PetShow = self.ui.widget
+
         self.ui.clock.ExpShow.AddClock(self.ui.clock)
         self.ui.clock.MainWindow = self
         self.shake_signal.connect(self.start_shake)
@@ -133,3 +135,37 @@ class PomodoroWindowGenerator(QWidget):
         import sys
         self.WebWindow = WebWindow()
         self.WebWindow.show()
+
+    def load_data(self):
+        try:
+            with open('profile.json', 'r') as f:
+                return json.load(f)
+        except FileNotFoundError:
+            return {}
+
+    def save_data(self):
+        with open(self.filename, 'w') as f:
+            json.dump(self.data, f)
+        f.close()
+
+    def AddMainWindow(self):
+        self.ui.clock.MainWindow = self
+
+    def start_shake(self):
+        self.shake_timer.start(50)
+        self.shake_count = 0
+        self.original_pos = self.pos()
+
+    def shake_window(self):
+        dx = dy = 5
+        if self.shake_count % 2 == 0:
+            dx = -dx
+        if (self.shake_count // 2) % 2 == 0:
+            dy = -dy
+
+        self.move(self.original_pos.x() + dx, self.original_pos.y() + dy)
+        self.shake_count += 1
+
+        if self.shake_count == 10:
+            self.shake_timer.stop()
+            self.move(self.original_pos)
