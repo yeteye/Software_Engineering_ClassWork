@@ -15,7 +15,7 @@ class ExpShow(QWidget):
             <br><br><span style="color: blue;">LV: </span>
             <span style="color: green;">""" + f"{self.data['level']}" + """</span>
             <br><span style="color: blue;">Exp:</span>
-            <span style="color: green;">""" + f"{self.data['exp']}" + """</span>
+            <span style="color: green;">""" + f"{self.data['exp']}/{self.data['level'] * 100}" + """</span>
                 """)
 
         layout = QVBoxLayout(self)
@@ -95,7 +95,7 @@ class ExpShow(QWidget):
     <br><br><span style="color: blue;">LV: </span>
     <span style="color: green;">"""+f"{self.data['level']}"+"""</span>
     <br><span style="color: blue;">Exp:</span>
-    <span style="color: green;">"""+f"{self.data['exp']}"+"""</span>
+    <span style="color: green;">"""+f"{self.data['exp']}/{self.data['level'] * 100}"+"""</span>
         """)
         self.label.setText(self.display_text)
         self.SetProgressBar()
