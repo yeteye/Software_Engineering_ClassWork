@@ -4,7 +4,6 @@ from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber, QSi
 from PySide6.QtCore import QTimer
 import json
 from levelSystem import LevelSystem
-from PetShow import PetShow
 
 class CountdownWidget(QWidget):
     def __init__(self, parent=None):
@@ -20,6 +19,9 @@ class CountdownWidget(QWidget):
         self.LevelSystem = LevelSystem()
         self.ExpShow = None
         self.PetShow = None
+        self.MainWindow = None
+
+
 
 
         layout = QVBoxLayout(self)
@@ -124,6 +126,17 @@ class CountdownWidget(QWidget):
 
 
 
+            self.timeLast = 0
+            if not self.start_button.isEnabled():
+                if self.MainWindow:
+                    self.MainWindow.shake_signal.emit()
+                self.RaiseWork()
+            if self.start_button.isEnabled():
+                if self.MainWindow:
+                    self.MainWindow.shake_signal.emit()
+                self.RaiseRelax()
+            self.start_button.setEnabled(True)
+            self.stop_button.setEnabled(False)
         self.LcdDisplay(self.time_left)
     # lcd显示实现
     def LcdDisplay(self, Time):
@@ -149,3 +162,13 @@ class CountdownWidget(QWidget):
                              "可选择点击右侧已创建任务\n以修改专注时间\n" + "\n" +
                              "(最多只能创建"+str(10)+"个任务)"+"\n"
                              "已专注次数:  " + str(self.task_times))
+
+    def RaiseWork(self):
+        message_box = QMessageBox(QMessageBox.Information, "工作完成!", "工作完成!")
+        message_box.setWindowIcon(QIcon(QPixmap("image/f3006b49c9f1fc1519d2bf688fc52e70.ico")))
+        message_box.exec()
+
+    def RaiseRelax(self):
+        message_box = QMessageBox(QMessageBox.Information, "休息完成!", "休息完成!")
+        message_box.setWindowIcon(QIcon(QPixmap("image/f3006b49c9f1fc1519d2bf688fc52e70.ico")))
+        message_box.exec()

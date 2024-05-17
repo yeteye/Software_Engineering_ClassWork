@@ -84,7 +84,7 @@ class ExpShow(QWidget):
         # 设置 QTimer
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_progress)
-        self.timer.start(5)  # 每 100 毫秒更新一次
+        self.timer.start(1)  # 每 100 毫秒更新一次
 
     def update_labels(self):
         self.data = self.load_data()
