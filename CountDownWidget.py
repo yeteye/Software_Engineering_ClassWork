@@ -89,20 +89,6 @@ class CountdownWidget(QWidget):
         self.time_left -= 1
         if self.time_left <= 0:
             self.timer.stop()
-            if not self.start_button.isEnabled():
-                if self.MainWindow:
-                    self.MainWindow.shake_signal.emit()
-                message_box = QMessageBox(QMessageBox.Information, "工作完成!", "工作完成!")
-                message_box.setWindowIcon(QIcon(QPixmap("image/f3006b49c9f1fc1519d2bf688fc52e70.ico")))
-                message_box.exec()
-            if self.start_button.isEnabled():
-                if self.MainWindow:
-                    self.MainWindow.shake_signal.emit()
-                message_box = QMessageBox(QMessageBox.Information, "休息完成!", "休息完成!")
-                message_box.setWindowIcon(QIcon(QPixmap("image/f3006b49c9f1fc1519d2bf688fc52e70.ico")))
-                message_box.exec()
-            self.start_button.setEnabled(True)
-            self.stop_button.setEnabled(False)
             self.time_left = 0
             self.flag = 1
             self.task_times += 1
@@ -123,9 +109,6 @@ class CountdownWidget(QWidget):
                 json.dump(data, f)
             self.LevelSystem.levelCalculate()
             self.ExpShow.update_labels()
-
-
-
             self.timeLast = 0
             if not self.start_button.isEnabled():
                 if self.MainWindow:
@@ -138,6 +121,9 @@ class CountdownWidget(QWidget):
             self.start_button.setEnabled(True)
             self.stop_button.setEnabled(False)
         self.LcdDisplay(self.time_left)
+
+
+
     # lcd显示实现
     def LcdDisplay(self, Time):
         minutes = Time // 60
