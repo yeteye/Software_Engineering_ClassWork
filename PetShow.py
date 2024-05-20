@@ -1,8 +1,23 @@
 import os
-from PySide6.QtWidgets import QLabel, QVBoxLayout, QWidget
+import time
+
+from PySide6.QtWidgets import QLabel, QVBoxLayout, QWidget, QSizePolicy
 from PySide6.QtCore import QTimer, Qt, QSize
 from PySide6.QtGui import QPixmap
 import json
+import random
+
+class ClickableLabel(QLabel):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
+    def mousePressEvent(self, event):
+        if event.button() == Qt.LeftButton:
+            self.clicked()
+
+    def clicked(self):
+        # 触发点击事件
+        self.parent().click_event()
 
 class PetShow(QWidget):
     def __init__(self, parent=None):
@@ -33,14 +48,28 @@ class PetShow(QWidget):
         self.current_index = 0  # Reset index after loading images
 
     def init_ui(self):
-        self.label = QLabel(self)
+        self.label = ClickableLabel(self)
         self.label.setAlignment(Qt.AlignCenter)
-
+        self.label.setStyleSheet("""
+                    QLabel {
+                        border: 2px solid #8f8f91;
+                        border-radius: 10px;
+                        padding: 5px;
+                        background-color: #f0f0f0;
+                        background-image: url('image/Pbackground.png');
+                        background-position: center;
+                        background-size: cover;
+                        color: #333;
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+                """)
         layout = QVBoxLayout()
         layout.addWidget(self.label)
         self.setLayout(layout)
 
         self.label.setMaximumSize(QSize(200, 200))
+
         self.label.setScaledContents(True)
 
     def start_animation(self, interval):
@@ -61,21 +90,28 @@ class PetShow(QWidget):
 
     def change_state(self, flag):
         self.change_animation(flag)
+        self.flag = flag
 
     def change_animation(self, flag):
         if flag == 1:
             self.image_folder = 'image/PET/Normal'
             self.interval = 400
         elif flag == 2:
-            self.image_folder = 'image/PET/Study'
+            self.image_folder = 'image/PET/Study/A_Normal'
             self.interval = 500
         elif flag == 3:
             self.image_folder = 'image/PET/Sleep'
             self.interval = 700
-        elif flag == 4:
-            self.image_folder = 'image/PET/Touch_Body'
-            self.interval = 200
+        elif flag == 5:
+            self.image_folder = 'image/PET/Study/B_Normal'
+            self.interval = 700
+        elif flag == 6:
+            self.image_folder = 'image/PET/Study/C_Normal'
+            self.interval = 500
+
+
         self.display(self.image_folder, self.interval)
+
 
     def load_data(self):
         try:
@@ -85,10 +121,26 @@ class PetShow(QWidget):
             return {}
 
     def click_event(self):
-        return {}
+        if self.random()==1:
+            self.image_folder = 'image/PET/Touch_Body/A_Happy'
+            self.interval = 300
+        elif self.random()==2:
+            self.image_folder = 'image/PET/Touch_Body/B_Happy'
+            self.interval = 300
+        elif self.random()==3:
+            self.image_folder = 'image/PET/Touch_Body/C_Happy'
+            self.interval = 300
 
+        self.display(self.image_folder, self.interval)
+
+        QTimer.singleShot(2000, lambda: self.change_animation(self.flag))  # 2秒后恢复原状态
+
+    def random(self):
+        random_number = random.randint(1, 3)
+        return random_number
     def display(self, image_folder, interval):
         self.load_images(image_folder)
         self.timer.stop()
+        print("now"+image_folder+"is displaying")
         self.start_animation(interval)
         self.update_frame()

@@ -20,7 +20,7 @@ class CountdownWidget(QWidget):
         self.ExpShow = None
         self.PetShow = None
         self.MainWindow = None
-
+        self.Pstate = 1
 
 
 
@@ -65,7 +65,8 @@ class CountdownWidget(QWidget):
 
     # button功能实现
     def start_countdown(self):
-        self.PetShow.change_state(2)
+        self.Pstate = 2
+        self.PetShow.change_state(self.Pstate)
         self.time_Update()
         self.LcdDisplay(self.time_left)
         self.timer.stop()
@@ -74,7 +75,8 @@ class CountdownWidget(QWidget):
         self.stop_button.setEnabled(True)
 
     def stop_countdown(self):
-        self.PetShow.change_state(3)
+        self.Pstate = 3
+        self.PetShow.change_state(self.Pstate)
         self.flag = 2
         self.time_Update()
         self.LcdDisplay(self.time_left)
@@ -87,12 +89,23 @@ class CountdownWidget(QWidget):
     # lcd倒计时
     def update_display(self):
         self.time_left -= 1
+        print(self.time_left)
+        if self.Pstate == 2 or self.Pstate ==5:
+            if self.timeLast-self.time_left == 4:
+                self.Pstate = 5
+                self.PetShow.change_state(self.Pstate)
+            elif self.time_left == 4:
+                self.Pstate = 6
+                self.PetShow.change_state(self.Pstate)
+
         if self.time_left <= 0:
+            self.PetShow.change_state(1)
             self.timer.stop()
             self.time_left = 0
             self.flag = 1
             self.task_times += 1
             self.setTimes()
+            self.LcdDisplay(self.time_left)
             try:
                 with open("profile.json", 'r') as f:
                     data = json.load(f)
