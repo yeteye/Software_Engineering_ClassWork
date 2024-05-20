@@ -17,6 +17,8 @@ class CountdownWidget(QWidget):
         self.timer.timeout.connect(self.update_display)
         self.display_text = "25:00"
         self.LevelSystem = LevelSystem()
+        self.ExpShow = None
+        self.PetShow = None
         self.MainWindow = None
 
 
@@ -63,6 +65,7 @@ class CountdownWidget(QWidget):
 
     # button功能实现
     def start_countdown(self):
+        self.PetShow.change_state(2)
         self.time_Update()
         self.LcdDisplay(self.time_left)
         self.timer.stop()
@@ -71,6 +74,7 @@ class CountdownWidget(QWidget):
         self.stop_button.setEnabled(True)
 
     def stop_countdown(self):
+        self.PetShow.change_state(3)
         self.flag = 2
         self.time_Update()
         self.LcdDisplay(self.time_left)
@@ -117,6 +121,9 @@ class CountdownWidget(QWidget):
             self.start_button.setEnabled(True)
             self.stop_button.setEnabled(False)
         self.LcdDisplay(self.time_left)
+
+
+
 
 
     # lcd显示实现

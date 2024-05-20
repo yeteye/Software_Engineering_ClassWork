@@ -1,4 +1,5 @@
-from PySide6.QtCore import QTime, QCoreApplication, QPropertyAnimation, QRect, Signal, QTimer
+from PySide6.QtCore import QTime, QCoreApplication, QPropertyAnimation, QRect, Signal, QTimer, QUrl
+from PySide6.QtMultimedia import QSoundEffect
 from PySide6.QtWidgets import QMainWindow, QApplication, QWidget, QFileDialog, QDialog, QDialogButtonBox, QLineEdit, \
     QScrollArea, QVBoxLayout, QFrame, QSizePolicy
 from PySide6.QtGui import QMouseEvent, Qt, QPixmap, QPainter, QPainterPath
@@ -29,8 +30,13 @@ class PomodoroWindowGenerator(QWidget):
         self.ui.avatar.mousePressEvent = self.changeAvatar
         self.ui.TaskCreator.mousePressEvent = self.createTaskUI
         self.ui.community.mousePressEvent = self.TurnToWeb
+
         self.ui.clock.ExpShow = self.ui.widget_2  #原expShow
+        self.ui.clock.PetShow = self.ui.widget
+
         self.ui.clock.ExpShow.AddClock(self.ui.clock)
+        self.shake_sound = QSoundEffect(self)
+        self.shake_sound.setSource(QUrl.fromLocalFile("image/shakese.wav"))
         self.ui.clock.MainWindow = self
         self.shake_signal.connect(self.start_shake)
         self.shake_timer = QTimer(self)
@@ -150,6 +156,7 @@ class PomodoroWindowGenerator(QWidget):
 
     def start_shake(self):
         self.shake_timer.start(50)
+        self.shake_sound.play()
         self.shake_count = 0
         self.original_pos = self.pos()
 
@@ -159,10 +166,10 @@ class PomodoroWindowGenerator(QWidget):
             dx = -dx
         if (self.shake_count // 2) % 2 == 0:
             dy = -dy
-
         self.move(self.original_pos.x() + dx, self.original_pos.y() + dy)
         self.shake_count += 1
 
         if self.shake_count == 10:
             self.shake_timer.stop()
+            self.shake_sound.stop()
             self.move(self.original_pos)

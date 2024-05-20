@@ -30,8 +30,21 @@ class Ui_MainWindow(object):
         icon = QIcon()
         icon.addFile(u"image/f3006b49c9f1fc1519d2bf688fc52e70.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
-        MainWindow.setStyleSheet(u"#MainWindow{background-color: rgb(255, 82, 99)}\n"
-"")
+        # 主窗口调整
+
+        MainWindow.setStyleSheet("""
+                    #MainWindow {
+                        background-color: rgb(255, 82, 99);
+                    }
+                    QPushButton {
+                        background-color: #4CAF50;
+                        color: white;
+
+                    }
+                    QPushButton:hover {
+                        background-color: #45a049;
+                    }
+                """)
         self.horizontalLayout = QHBoxLayout(MainWindow)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.verticalLayout = QVBoxLayout()

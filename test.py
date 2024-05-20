@@ -1,86 +1,56 @@
 import sys
-from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QProgressBar, QPushButton
+import os
+from PySide6.QtWidgets import QApplication, QLabel, QVBoxLayout, QWidget
+from PySide6.QtCore import QTimer, Qt
+from PySide6.QtGui import QPixmap
 
-class ProgressBarExample(QWidget):
-    def __init__(self):
+class GifPlayer(QWidget):
+    def __init__(self, image_folder, interval=100):
         super().__init__()
+        self.image_folder = image_folder
+        self.interval = interval
+        self.images = []
+        self.current_index = 0
 
-        self.data = {'exp': 0}
+        self.load_images()
+        self.init_ui()
+        self.start_animation()
 
-        self.initUI()
+    def load_images(self):
+        # 加载文件夹中的所有 PNG 图像
+        for filename in sorted(os.listdir(self.image_folder)):
+            if filename.endswith('.png'):
+                self.images.append(os.path.join(self.image_folder, filename))
 
-    def initUI(self):
-        self.progress_bar = QProgressBar(self)
-        self.progress_bar.setMinimum(0)
-        self.progress_bar.setMaximum(100)
-        self.progress_bar.setValue(self.data['exp'])
-
-        self.button = QPushButton('Increase', self)
-        self.button.clicked.connect(self.increaseProgress)
+    def init_ui(self):
+        self.label = QLabel(self)
+        self.label.setAlignment(Qt.AlignCenter)
 
         layout = QVBoxLayout()
-        layout.addWidget(self.progress_bar)
-        layout.addWidget(self.button)
-
+        layout.addWidget(self.label)
         self.setLayout(layout)
-        self.setWindowTitle('Progress Bar Example')
-        self.setGeometry(300, 300, 300, 200)
 
-    def increaseProgress(self):
-        if self.data['exp'] < 100:
-            self.data['exp'] += 10
-            self.progress_bar.setValue(self.data['exp'])
+        self.setWindowTitle('PNG Animation')
+        self.setGeometry(40, 40, 40, 40)
 
-def main():
-    app = QApplication(sys.argv)
-    ex = ProgressBarExample()
-    ex.show()
-    sys.exit(app.exec_())
+    def start_animation(self):
+        # 设置定时器以切换图像
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.update_frame)
+        self.timer.start(self.interval)
 
-if __name__ == '__main__':
-    main()
-import sys
-import time
-from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
-from PySide6.QtCore import Qt, QTimer
-
-
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-
-        self.setWindowTitle("窗口抖动示例")
-        self.setGeometry(100, 100, 400, 300)
-
-        self.button = QPushButton("抖动窗口", self)
-        self.button.setGeometry(150, 120, 100, 50)
-        self.button.clicked.connect(self.start_shake)
-
-        self.shake_timer = QTimer(self)
-        self.shake_timer.timeout.connect(self.shake_window)
-
-    def start_shake(self):
-        self.shake_timer.start(50)
-        self.shake_count = 0
-        self.original_pos = self.pos()
-
-    def shake_window(self):
-        dx = dy = 5
-        if self.shake_count % 2 == 0:
-            dx = -dx
-        if (self.shake_count // 2) % 2 == 0:
-            dy = -dy
-
-        self.move(self.original_pos.x() + dx, self.original_pos.y() + dy)
-        self.shake_count += 1
-
-        if self.shake_count == 10:
-            self.shake_timer.stop()
-            self.move(self.original_pos)
-
+    def update_frame(self):
+        # 切换图像
+        if self.images:
+            pixmap = QPixmap(self.images[self.current_index])
+            self.label.setPixmap(pixmap)
+            self.current_index = (self.current_index + 1) % len(self.images)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    window = MainWindow()
-    window.show()
+
+    image_folder = "image"  # 替换为你的PNG图像文件夹路径
+    player = GifPlayer(image_folder, interval=100)  # interval以毫秒为单位
+    player.show()
+
     sys.exit(app.exec())
