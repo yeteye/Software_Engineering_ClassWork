@@ -117,6 +117,8 @@ class CountdownWidget(QWidget):
             self.start_button.setEnabled(True)
             self.stop_button.setEnabled(False)
         self.LcdDisplay(self.time_left)
+
+
     # lcd显示实现
     def LcdDisplay(self, Time):
         minutes = Time // 60
