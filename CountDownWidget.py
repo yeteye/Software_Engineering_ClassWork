@@ -1,5 +1,5 @@
 from PySide6 import QtCore
-from PySide6.QtGui import QFont, QPixmap, QIcon
+from PySide6.QtGui import QFont, QPixmap, QIcon, Qt
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber, QSizePolicy, QLabel, QMessageBox
 from PySide6.QtCore import QTimer
 import json
@@ -154,9 +154,11 @@ class CountdownWidget(QWidget):
     def RaiseWork(self):
         message_box = QMessageBox(QMessageBox.Information, "工作完成!", "工作完成!")
         message_box.setWindowIcon(QIcon(QPixmap("image/f3006b49c9f1fc1519d2bf688fc52e70.ico")))
+        message_box.setWindowFlags(message_box.windowFlags() | Qt.WindowStaysOnTopHint)
         message_box.exec()
 
     def RaiseRelax(self):
         message_box = QMessageBox(QMessageBox.Information, "休息完成!", "休息完成!")
         message_box.setWindowIcon(QIcon(QPixmap("image/f3006b49c9f1fc1519d2bf688fc52e70.ico")))
+        message_box.setWindowFlags(message_box.windowFlags() | Qt.WindowStaysOnTopHint)
         message_box.exec()
