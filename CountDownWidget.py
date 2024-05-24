@@ -10,8 +10,8 @@ class CountdownWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.web_window = None
-        self.current_task = None
-        self.current_task_time = None
+        self.current_task = "默认"
+        self.current_task_time = "25:00"
         self.flag = 1
         self.timeLast = 0
         self.task_times = 0
