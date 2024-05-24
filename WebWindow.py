@@ -5,8 +5,9 @@ from PySide6.QtGui import QIcon
 
 
 class WebWindow(QMainWindow):
-    def __init__(self):
+    def __init__(self, if_index=True):
         super().__init__()
+        self.if_index = if_index
         self.setUI()
 
     def setUI(self):
@@ -19,7 +20,9 @@ class WebWindow(QMainWindow):
         # 创建Web视图
         self.webView = QWebEngineView()
         self.setCentralWidget(self.webView)
-
+        if self.if_index:
         # 加载网页
-        self.webView.setUrl('https://github.com/orgs/community/discussions/')
+            self.webView.setUrl('http://10.16.205.138:8000/')
+        else:
+            self.webView.setUrl('http://10.16.205.138:8000/post/new/')
 
