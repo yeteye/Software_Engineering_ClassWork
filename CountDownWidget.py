@@ -10,6 +10,8 @@ class CountdownWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.web_window = None
+        self.current_task = None
+        self.current_task_time = None
         self.flag = 1
         self.timeLast = 0
         self.task_times = 0
@@ -171,7 +173,7 @@ class CountdownWidget(QWidget):
         message_box.button(QMessageBox.No).setText("继续工作")
         message_box.exec()
         if message_box.clickedButton() == message_box.button(QMessageBox.Yes):
-            self.web_window = WebWindow(False)
+            self.web_window = WebWindow(False, self.current_task, self.current_task_time)
             self.web_window.show()
 
     def RaiseRelax(self):

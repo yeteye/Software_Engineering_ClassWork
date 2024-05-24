@@ -5,9 +5,11 @@ from PySide6.QtGui import QIcon
 
 
 class WebWindow(QMainWindow):
-    def __init__(self, if_index=True):
+    def __init__(self, if_index=True,task='',task_time=''):
         super().__init__()
         self.if_index = if_index
+        self.task = task
+        self.task_time = task_time
         self.setUI()
 
     def setUI(self):
@@ -22,7 +24,7 @@ class WebWindow(QMainWindow):
         self.setCentralWidget(self.webView)
         if self.if_index:
         # 加载网页
-            self.webView.setUrl('http://10.16.205.138:8000/')
+            url = f'http://127.0.0.1:8000/' # 本地服务器地址，运行时请修改
         else:
-            self.webView.setUrl('http://10.16.205.138:8000/post/new/')
-
+            url = f'http://127.0.0.1:8000/post/new/?task={self.task}&task_time={self.task_time}' # 本地服务器地址，运行时请修改
+        self.webView.setUrl(url)
