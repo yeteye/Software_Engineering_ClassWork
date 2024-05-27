@@ -93,7 +93,6 @@ class CountdownWidget(QWidget):
     # lcd倒计时
     def update_display(self):
         self.time_left -= 1
-        print(self.time_left)
         if self.Pstate == 2 or self.Pstate ==5:
             if self.timeLast-self.time_left == 4:
                 self.Pstate = 5
