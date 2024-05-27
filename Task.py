@@ -37,6 +37,8 @@ class Task(QWidget):
                 self.MainWindow.ui.clock.stop_button.setEnabled(False)
                 self.MainWindow.ui.clock.flag = 3
                 self.MainWindow.ui.clock.timeLast = self.timeLast
+                self.MainWindow.ui.clock.current_task_time = f'{self.timeLast//60:02d}:{self.timeLast%60:02d}'
+                self.MainWindow.ui.clock.current_task = self.name
                 self.MainWindow.ui.clock.LcdDisplay(self.timeLast)
         return
 

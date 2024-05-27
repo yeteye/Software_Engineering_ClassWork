@@ -1,13 +1,17 @@
 from PySide6 import QtCore
-from PySide6.QtGui import QFont, QPixmap, QIcon, Qt
+from PySide6.QtGui import QFont, QPixmap, QIcon
 from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber, QSizePolicy, QLabel, QMessageBox
 from PySide6.QtCore import QTimer
 import json
 from levelSystem import LevelSystem
+from WebWindow import WebWindow
 
 class CountdownWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.web_window = None
+        self.current_task = "默认"
+        self.current_task_time = "25:00"
         self.flag = 1
         self.timeLast = 0
         self.task_times = 0
@@ -132,8 +136,8 @@ class CountdownWidget(QWidget):
                     self.MainWindow.shake_signal.emit()
                 self.RaiseRelax()
             self.start_button.setEnabled(True)
+            self.stop_button.setEnabled(False)
         self.LcdDisplay(self.time_left)
-
 
 
 
@@ -163,13 +167,16 @@ class CountdownWidget(QWidget):
                              "已专注次数:  " + str(self.task_times))
 
     def RaiseWork(self):
-        message_box = QMessageBox(QMessageBox.Information, "工作完成!", "工作完成!")
+        message_box = QMessageBox(QMessageBox.Question, "工作完成!", "工作完成!", QMessageBox.Yes | QMessageBox.No)
         message_box.setWindowIcon(QIcon(QPixmap("image/f3006b49c9f1fc1519d2bf688fc52e70.ico")))
-        message_box.setWindowFlags(message_box.windowFlags() | Qt.WindowStaysOnTopHint)
+        message_box.button(QMessageBox.Yes).setText("前往社区")
+        message_box.button(QMessageBox.No).setText("继续工作")
         message_box.exec()
+        if message_box.clickedButton() == message_box.button(QMessageBox.Yes):
+            self.web_window = WebWindow(False, self.current_task, self.current_task_time)
+            self.web_window.show()
 
     def RaiseRelax(self):
         message_box = QMessageBox(QMessageBox.Information, "休息完成!", "休息完成!")
         message_box.setWindowIcon(QIcon(QPixmap("image/f3006b49c9f1fc1519d2bf688fc52e70.ico")))
-        message_box.setWindowFlags(message_box.windowFlags() | Qt.WindowStaysOnTopHint)
         message_box.exec()
