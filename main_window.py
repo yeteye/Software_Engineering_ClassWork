@@ -39,10 +39,15 @@ class Ui_MainWindow(object):
                     QPushButton {
                         background-color: #4CAF50;
                         color: white;
-
+                        border-radius: 10px; /* 圆角边框 */
                     }
                     QPushButton:hover {
-                        background-color: #45a049;
+                        background-color: #45a049; /* 悬停时的背景颜色 */
+                    }
+                    QPushButton:pressed {
+                        background-color: #3e8e41; /* 按下时的背景颜色 */
+                        padding-top: 12px; /* 按下时的内边距调整，模拟按压感 */
+                        padding-bottom: 8px; /* 按下时的内边距调整，模拟按压感 */
                     }
                 """)
         self.horizontalLayout = QHBoxLayout(MainWindow)

@@ -21,5 +21,5 @@ class WebWindow(QMainWindow):
         self.setCentralWidget(self.webView)
 
         # 加载网页
-        self.webView.setUrl('https://github.com/orgs/community/discussions/')
+        self.webView.setUrl('http://frp-fly.top:53065/')
 
