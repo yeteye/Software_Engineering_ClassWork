@@ -132,9 +132,7 @@ class CountdownWidget(QWidget):
                     self.MainWindow.shake_signal.emit()
                 self.RaiseRelax()
             self.start_button.setEnabled(True)
-            self.stop_button.setEnabled(False)
         self.LcdDisplay(self.time_left)
-
 
 
 
