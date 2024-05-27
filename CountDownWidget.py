@@ -4,10 +4,14 @@ from PySide6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLCDNumber, QSi
 from PySide6.QtCore import QTimer
 import json
 from levelSystem import LevelSystem
+from WebWindow import WebWindow
 
 class CountdownWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.web_window = None
+        self.current_task = "默认"
+        self.current_task_time = "25:00"
         self.flag = 1
         self.timeLast = 0
         self.task_times = 0
@@ -89,7 +93,6 @@ class CountdownWidget(QWidget):
     # lcd倒计时
     def update_display(self):
         self.time_left -= 1
-        #print(self.time_left)
         if self.Pstate == 2 or self.Pstate ==5:
             if self.timeLast-self.time_left == 4:
                 self.Pstate = 5
@@ -163,9 +166,14 @@ class CountdownWidget(QWidget):
                              "已专注次数:  " + str(self.task_times))
 
     def RaiseWork(self):
-        message_box = QMessageBox(QMessageBox.Information, "工作完成!", "工作完成!")
+        message_box = QMessageBox(QMessageBox.Question, "工作完成!", "工作完成!", QMessageBox.Yes | QMessageBox.No)
         message_box.setWindowIcon(QIcon(QPixmap("image/f3006b49c9f1fc1519d2bf688fc52e70.ico")))
+        message_box.button(QMessageBox.Yes).setText("前往社区")
+        message_box.button(QMessageBox.No).setText("继续工作")
         message_box.exec()
+        if message_box.clickedButton() == message_box.button(QMessageBox.Yes):
+            self.web_window = WebWindow(False, self.current_task, self.current_task_time)
+            self.web_window.show()
 
     def RaiseRelax(self):
         message_box = QMessageBox(QMessageBox.Information, "休息完成!", "休息完成!")

@@ -141,6 +141,5 @@ class PetShow(QWidget):
     def display(self, image_folder, interval):
         self.load_images(image_folder)
         self.timer.stop()
-
         self.start_animation(interval)
         self.update_frame()
