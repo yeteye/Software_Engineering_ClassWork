@@ -35,8 +35,8 @@ class WebWindow(QMainWindow):
         self.webView = PromodoroWebEngineView()
         self.setCentralWidget(self.webView)
         if self.if_index:
-            # 加载网页
-            url = f'http://127.0.0.1:8000/'  # 本地服务器地址，运行时请修改
+        # 加载网页
+            url = f'http://frp-fly.top:53065/' # 本地服务器地址，运行时请修改
         else:
-            url = f'http://127.0.0.1:8000/post/new/?task={self.task}&task_time={self.task_time}'  # 本地服务器地址，运行时请修改
+            url = f'http://frp-fly.top:53065/post/new/?task={self.task}&task_time={self.task_time}' # 本地服务器地址，运行时请修改
         self.webView.setUrl(url)
