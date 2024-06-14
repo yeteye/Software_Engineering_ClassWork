@@ -41,7 +41,9 @@ class WebWindow(QMainWindow):
         self.setCentralWidget(self.webView)
         if self.if_index:
             # 加载网页
-            url = f"http://frp-fly.top:53065/"  # 本地服务器地址，运行时请修改
+            url = f"https://veliona.pythonanywhere.com/"
+            # url = f"http://localhost:8000/" # 本地服务器地址，运行时请修改
         else:
-            url = f"http://frp-fly.top:53065/post/new/?task={self.task}&task_time={self.task_time}"  # 本地服务器地址，运行时请修改
+            url = f"https://veliona.pythonanywhere.com/post/new/?task={self.task}&task_time={self.task_time}"
+            # url = f"http://localhost:8000/post/new/?task={self.task}&task_time={self.task_time}" # 本地服务器地址，运行时请修改
         self.webView.setUrl(url)
